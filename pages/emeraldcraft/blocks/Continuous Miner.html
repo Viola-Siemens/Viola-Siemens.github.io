@@ -50,9 +50,9 @@
 							  CONTRIBUTE <span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu bullet fadeIn" role="menu">
-							  <li><a href="#first">Upload Translation</a></li>
-							  <li><a href="#second">Bugs and Crashes</a></li>
-							  <li><a href="#third">Suggestions</a></li>
+							  <li><a href="https://www.curseforge.com/members/viola_siemens/projects">Upload Translation</a></li>
+							  <li><a href="https://github.com/Viola-Siemens/EmeraldCraftMod/issues">Bugs and Crashes</a></li>
+							  <li><a href="https://www.curseforge.com/minecraft/mc-mods/emerald-craft-mod#reply">Suggestions</a></li>
 							</ul>
 						</li>
 						<li><a href="https://www.curseforge.com/minecraft/mc-mods/emerald-craft-mod">DOWNLOAD</a></li>
@@ -67,7 +67,7 @@
 		<div class="container">
 			<div style="display:inline-block" class="slogan">
 				<h2>连续采矿机</h2>
-				<h4></h4>
+				<h4>消耗熔融绿宝石，在红石的激活下可以自动挖矿的采矿机器</h4>
 			</div>
 			<div style="display:inline-block;float:right;background-color:#ffffff">
 				<div style="text-align:center;background-color:#bebeff;font-size:28px;font-weight:bold">连续采矿机</div>
@@ -90,14 +90,17 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="wow bounceInLeft" data-wow-delay="0.1s"> 
-						<h2>Abstract</h2> 
+						<h2>简介</h2> 
 					</div>
 					<div class="col-sm-12">
 						<p>
-							
+							绿宝石工艺v1.2加入的方块，除了能给村民提供岗位使之成为地质勘测员外，玩家还可以用它实现自动挖矿、自动树场、自动垂钓等功能，同样造价也非常昂贵。
 						</p>
 						<p>
-							
+							连续采矿机需要填充熔融绿宝石、并有红石信号激活后才可以工作。每桶熔融绿宝石可以挖掘100次（每次通常掉落1个物品，但每次也有较小概率挖掘后无产出，尤其是挖掘黑曜石等较稀有的矿物时）。
+						</p>
+						<p>
+							采矿机的一侧（默认是放置时玩家的朝向）是可以挖掘的破岩轮。根据破岩轮正对着的方块（不消耗）的不同，挖掘产出采用了不同的战利品表。
 						</p>
 					</div>
 				</div>				
@@ -112,7 +115,7 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="wow bounceInLeft" data-wow-delay="0.1s">
-					<h2>Obtaining</h2>
+					<h2>获取</h2>
 					</div>
 				</div>				
 			</div>
@@ -121,12 +124,9 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="col-sm-12">
-						<h4>Breaking</h4>
+						<h4>挖掘</h4>
 						<p>
-							
-						</p>
-						<p>
-							
+							连续采矿机必须使用石质及以上等级的镐挖掘才可以掉落，使用其它物品破坏时不会产生任何掉落物。
 						</p>
 					</div>
 				</div>				
@@ -136,12 +136,9 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="col-sm-12">
-						<h4>Trading</h4>
+						<h4>合成</h4>
 						<p>
-							
-						</p>
-						<p>
-							
+							连续采矿机可以在工作台上使用三个破岩轮、两个铁锭、两个活塞、一个红石粉和一个绿宝石块合成。
 						</p>
 					</div>
 				</div>				
@@ -156,7 +153,7 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="wow bounceInLeft" data-wow-delay="0.1s">
-					<h2>Usage</h2>
+					<h2>用途</h2>
 					</div>
 				</div>				
 			</div>
@@ -165,12 +162,12 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="col-sm-12">
-						<h4>Crafting</h4>
+						<h4>挖掘矿物</h4>
 						<p>
-							
+							当破岩轮对准主世界各种石头（如石头、深板岩、花岗岩等）、圆石和深板岩圆石时，连续采矿机将产出钻石、红石、粗铁等主世界常见矿物，以及凝灰岩、安山岩等主世界常见火成岩，还有圆石和深板岩圆石。
 						</p>
 						<p>
-							
+							当破岩轮对准下界各种石头（如下界岩、玄武岩、黑石等）、灵魂沙和灵魂土时，连续采矿机将产出金粒、石英、远古遗骸等下界常见矿物，以及下界岩、黑石等下界常见石头，还有灵魂沙和灵魂土。
 						</p>
 					</div>
 				</div>				
@@ -180,12 +177,33 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="col-sm-12">
-						<h4>Smelting</h4>
+						<h4>自动伐木</h4>
 						<p>
-							
+							当破岩轮对准相应原木（菌柄）、木头（菌核）及其去皮变种时，连续采矿机将产出对应原木、木板、树苗、果实，以及木棍（或疣块、藤曼等）。
 						</p>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="third"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>自动钓鱼</h4>
 						<p>
-							
+							当破岩轮对准相应水源时，连续采矿机将产出各种鱼类和腐肉、睡莲、附魔书等钓鱼时可获得的宝藏和垃圾。
+						</p>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="forth"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>职业方块</h4>
+						<p>
+							连续采矿机是模组添加的工作站点之一。认领连续采矿机的村民将会成为地质勘测员，玩家可以与之交易各类岩石相关的物品。
 						</p>
 					</div>
 				</div>				

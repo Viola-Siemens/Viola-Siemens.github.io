@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>冶矿台</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+	<!-- Font Awesome -->
+	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+    <!-- Animation -->
+	<link href="/css/animate.css" rel="stylesheet" />
+	
+    <!-- MyTemplate CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+	
+</head>
+
+<body>
+	<header id="header-banner">
+		<nav class="navbar navbar-default navbar-fixed-top fadeIn" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dropdown-box-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand">
+						<a href="/pages/emeraldcraft/index.html">Emerald Craft</a>
+					</div>
+				</div>
+				
+				<!-- Collect the nav links and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-right" id="dropdown-box-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/pages/emeraldcraft/index.html">HOME</a></li>
+						<li><a href="/pages/emeraldcraft/about.html">ABOUT</a></li>
+						<li class="dropdown" role="presentation">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+							  CONTRIBUTE <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu bullet fadeIn" role="menu">
+							  <li><a href="#first">Upload Translation</a></li>
+							  <li><a href="#second">Bugs and Crashes</a></li>
+							  <li><a href="#third">Suggestions</a></li>
+							</ul>
+						</li>
+						<li><a href="https://www.curseforge.com/minecraft/mc-mods/emerald-craft-mod">DOWNLOAD</a></li>
+					</ul>
+				</div>
+			</div> <!-- /.container -->
+		</nav> <!-- /.nav -->
+	</header>
+		
+	<!-- banner -->
+    <section class="banner" id="home">
+		<div class="container">
+			<div style="display:inline-block" class="slogan">
+				<h2>冶矿台</h2>
+				<h4>消耗烈焰粉，利用常见方块产出矿物颗粒</h4>
+			</div>
+			<div style="display:inline-block;float:right;background-color:#ffffff">
+				<div style="text-align:center;background-color:#bebeff;font-size:28px;font-weight:bold">冶矿台</div>
+				<div style="padding: 10px 10px 10px 10px;text-align:center"><img src="data:image/png;base64,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"/></div>
+				<div style="text-align:center;background-color:#dedede">emeraldcraft:mineral_table</div>
+			</div>
+			
+			<div class="btn-circle-scroll fadeIn">
+				<a href="#section-footer" class="btn-circle">
+					<i class="fa fa-angle-double-down animated"></i>
+				</a>
+			</div>
+		</div>
+    </section>
+	<!-- /.banner -->
+
+	<!-- abstract -->
+    <section class="abstract" id="abstract">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s"> 
+						<h2>简介</h2> 
+					</div>
+					<div class="col-sm-12">
+						<p>
+							其实随处可见的方块中也蕴含了贵重的金属颗粒，不过你需要相对昂贵的代价将这些颗粒从大量方块中提纯出来。
+						</p>
+						<p>
+							玩家可以通过冶矿台实现贵金属的冶炼，包括从沙砾中提炼铁粒、从红沙中提炼金粒等，而冶炼过程需要消耗烈焰粉。同时冶矿台也能为失业的村民提供职业方块，使之成为矿工。
+						</p>
+						<p>
+							冶矿台的交互GUI与酿造台有些相似，功能和熔炉相似，但只有烈焰粉能够提供燃料，支撑其冶炼20个物品。
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.abstract -->
+	
+	<!-- obtaining -->
+    <section class="obtaining" id="obtaining">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+					<h2>获取</h2>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>挖掘</h4>
+						<p>
+							冶矿台必须使用任意镐挖掘才可以掉落，使用其它物品破坏时不会产生任何掉落物。
+						</p>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>合成</h4>
+						<p>
+							冶矿台可以在工作台上使用三个铁锭、五个磨制深板岩和一个熔炉合成。
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.obtaining -->
+	
+	<!-- usage -->
+    <section class="usage" id="usage">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+					<h2>用途</h2>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>冶炼</h4>
+						<p>
+							冶矿台可以将常见的方块中的稀有矿物提取出来，产物通常是贵金属颗粒。
+						</p>
+						<p>
+							冶矿台以烈焰粉作为燃料，每个烈焰粉可填满一个燃料槽。满的燃料槽可供连续冶炼20个物品。若中途中断冶炼，或冶炼物品数量不足20个，未耗尽的燃料槽仍会继续消耗，而烈焰粉不会自动消耗。
+						</p>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>职业方块</h4>
+						<p>
+							冶矿台是模组添加的工作站点之一。认领冶矿台的村民将会成为矿工，玩家可以与之交易矿物等相关的物品。
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.usage -->
+	
+	<!-- footer -->
+	<footer id="section-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<div class="wow fadeIn" data-wow-delay="0.4s">
+						<div class="btn-circle-scroll">
+							<a href="#header-banner" class="btn-circle">
+								<i class="fa fa-angle-double-up animated"></i>
+							</a>
+						</div>
+					</div>
+					<p>Copyright &copy; 2022. MIT License. <a target="_blank" href="https://github.com/Viola-Siemens/Viola-Siemens.github.io">网页源码</a></p>
+				</div>
+			</div>	
+		</div>
+	</footer>
+	<!-- /.footer -->
+	
+	<!-- Core JavaScript Files -->
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.easing.min.js"></script>	
+	<script src="/js/jquery.scrollTo.js"></script>
+	<script src="/js/wow.min.js"></script>			<!-- Reveal animation when you scroll by wow.js. It need animate.css library -->
+	<!-- Custom Theme JavaScript -->
+	<script src="/js/custom.js"></script>
+</body>
+</html>

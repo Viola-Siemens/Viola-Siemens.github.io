@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>金墙</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+	<!-- Font Awesome -->
+	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+    <!-- Animation -->
+	<link href="/css/animate.css" rel="stylesheet" />
+	
+    <!-- MyTemplate CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+	
+</head>
+
+<body>
+	<header id="header-banner">
+		<nav class="navbar navbar-default navbar-fixed-top fadeIn" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dropdown-box-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand">
+						<a href="/pages/emeraldcraft/index.html">Emerald Craft</a>
+					</div>
+				</div>
+				
+				<!-- Collect the nav links and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-right" id="dropdown-box-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/pages/emeraldcraft/index.html">HOME</a></li>
+						<li><a href="/pages/emeraldcraft/about.html">ABOUT</a></li>
+						<li class="dropdown" role="presentation">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+							  CONTRIBUTE <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu bullet fadeIn" role="menu">
+							  <li><a href="#first">Upload Translation</a></li>
+							  <li><a href="#second">Bugs and Crashes</a></li>
+							  <li><a href="#third">Suggestions</a></li>
+							</ul>
+						</li>
+						<li><a href="https://www.curseforge.com/minecraft/mc-mods/emerald-craft-mod">DOWNLOAD</a></li>
+					</ul>
+				</div>
+			</div> <!-- /.container -->
+		</nav> <!-- /.nav -->
+	</header>
+		
+	<!-- banner -->
+    <section class="banner" id="home">
+		<div class="container">
+			<div style="display:inline-block" class="slogan">
+				<h2>金墙</h2>
+				<h4></h4>
+			</div>
+			<div style="display:inline-block;float:right;background-color:#ffffff">
+				<div style="text-align:center;background-color:#bebeff;font-size:28px;font-weight:bold">金墙</div>
+				<div style="padding: 10px 10px 10px 10px;text-align:center"><img src="data:image/png;base64,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"/></div>
+				<div style="text-align:center;background-color:#dedede">emeraldcraft:gold_wall</div>
+			</div>
+			
+			<div class="btn-circle-scroll fadeIn">
+				<a href="#section-footer" class="btn-circle">
+					<i class="fa fa-angle-double-down animated"></i>
+				</a>
+			</div>
+		</div>
+    </section>
+	<!-- /.banner -->
+
+	<!-- abstract -->
+    <section class="abstract" id="abstract">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s"> 
+						<h2>Abstract</h2> 
+					</div>
+					<div class="col-sm-12">
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.abstract -->
+	
+	<!-- obtaining -->
+    <section class="obtaining" id="obtaining">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+					<h2>Obtaining</h2>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Breaking</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Trading</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.obtaining -->
+	
+	<!-- usage -->
+    <section class="usage" id="usage">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+					<h2>Usage</h2>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Crafting</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Smelting</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.usage -->
+	
+	<!-- footer -->
+	<footer id="section-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<div class="wow fadeIn" data-wow-delay="0.4s">
+						<div class="btn-circle-scroll">
+							<a href="#header-banner" class="btn-circle">
+								<i class="fa fa-angle-double-up animated"></i>
+							</a>
+						</div>
+					</div>
+					<p>Copyright &copy; 2022. MIT License. <a target="_blank" href="https://github.com/Viola-Siemens/Viola-Siemens.github.io">网页源码</a></p>
+				</div>
+			</div>	
+		</div>
+	</footer>
+	<!-- /.footer -->
+	
+	<!-- Core JavaScript Files -->
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.easing.min.js"></script>	
+	<script src="/js/jquery.scrollTo.js"></script>
+	<script src="/js/wow.min.js"></script>			<!-- Reveal animation when you scroll by wow.js. It need animate.css library -->
+	<!-- Custom Theme JavaScript -->
+	<script src="/js/custom.js"></script>
+</body>
+</html>

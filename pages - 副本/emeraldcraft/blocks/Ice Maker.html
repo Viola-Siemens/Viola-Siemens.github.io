@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>制冰机</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+	<!-- Font Awesome -->
+	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+    <!-- Animation -->
+	<link href="/css/animate.css" rel="stylesheet" />
+	
+    <!-- MyTemplate CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+	
+</head>
+
+<body>
+	<header id="header-banner">
+		<nav class="navbar navbar-default navbar-fixed-top fadeIn" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dropdown-box-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand">
+						<a href="/pages/emeraldcraft/index.html">Emerald Craft</a>
+					</div>
+				</div>
+				
+				<!-- Collect the nav links and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-right" id="dropdown-box-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/pages/emeraldcraft/index.html">HOME</a></li>
+						<li><a href="/pages/emeraldcraft/about.html">ABOUT</a></li>
+						<li class="dropdown" role="presentation">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+							  CONTRIBUTE <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu bullet fadeIn" role="menu">
+							  <li><a href="#first">Upload Translation</a></li>
+							  <li><a href="#second">Bugs and Crashes</a></li>
+							  <li><a href="#third">Suggestions</a></li>
+							</ul>
+						</li>
+						<li><a href="https://www.curseforge.com/minecraft/mc-mods/emerald-craft-mod">DOWNLOAD</a></li>
+					</ul>
+				</div>
+			</div> <!-- /.container -->
+		</nav> <!-- /.nav -->
+	</header>
+		
+	<!-- banner -->
+    <section class="banner" id="home">
+		<div class="container">
+			<div style="display:inline-block" class="slogan">
+				<h2>制冰机</h2>
+				<h4>消耗水，将液体凝固</h4>
+			</div>
+			<div style="display:inline-block;float:right;background-color:#ffffff">
+				<div style="text-align:center;background-color:#bebeff;font-size:28px;font-weight:bold">制冰机</div>
+				<div style="padding: 10px 10px 10px 10px;text-align:center"><img src="data:image/png;base64,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"/></div>
+				<div style="text-align:center;background-color:#dedede">emeraldcraft:ice_maker</div>
+			</div>
+			
+			<div class="btn-circle-scroll fadeIn">
+				<a href="#section-footer" class="btn-circle">
+					<i class="fa fa-angle-double-down animated"></i>
+				</a>
+			</div>
+		</div>
+    </section>
+	<!-- /.banner -->
+
+	<!-- abstract -->
+    <section class="abstract" id="abstract">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s"> 
+						<h2>Abstract</h2> 
+					</div>
+					<div class="col-sm-12">
+						<p>
+							制冰机是绿宝石工艺v1.2添加的功能方块，可以实现蒸发水散热，定向地将液体凝固为固体。
+						</p>
+						<p>
+							制冰机需要放入原料（桶装液体）和冷凝液（水）便可工作。
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.abstract -->
+	
+	<!-- obtaining -->
+    <section class="obtaining" id="obtaining">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+					<h2>获取</h2>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>挖掘</h4>
+						<p>
+							制冰机必须使用石质及以上等级的镐挖掘才可以掉落，使用其它物品破坏时不会产生任何掉落物。
+						</p>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>合成</h4>
+						<p>
+							制冰机可以在工作台上使用五个圆石、两个冰块、一个红砖和一个绿宝石块合成。
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.obtaining -->
+	
+	<!-- usage -->
+    <section class="usage" id="usage">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+					<h2>用途</h2>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>凝固液体</h4>
+						<p>
+							制冰机通过消耗冷凝液（水），可以将液体凝固为固体，如将矿水凝固成矿块、水凝固成冰、熔岩凝固成黑曜石等。
+						</p>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>职业方块</h4>
+						<p>
+							制冰机是模组添加的工作站点之一。认领制冰机的村民将会成为制冰师，玩家可以与之交易冰、雪等相关的物品。
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.usage -->
+	
+	<!-- footer -->
+	<footer id="section-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<div class="wow fadeIn" data-wow-delay="0.4s">
+						<div class="btn-circle-scroll">
+							<a href="#header-banner" class="btn-circle">
+								<i class="fa fa-angle-double-up animated"></i>
+							</a>
+						</div>
+					</div>
+					<p>Copyright &copy; 2022. MIT License. <a target="_blank" href="https://github.com/Viola-Siemens/Viola-Siemens.github.io">网页源码</a></p>
+				</div>
+			</div>	
+		</div>
+	</footer>
+	<!-- /.footer -->
+	
+	<!-- Core JavaScript Files -->
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.easing.min.js"></script>	
+	<script src="/js/jquery.scrollTo.js"></script>
+	<script src="/js/wow.min.js"></script>			<!-- Reveal animation when you scroll by wow.js. It need animate.css library -->
+	<!-- Custom Theme JavaScript -->
+	<script src="/js/custom.js"></script>
+</body>
+</html>

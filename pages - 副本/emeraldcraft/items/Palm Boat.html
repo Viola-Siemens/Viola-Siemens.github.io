@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>棕榈木船</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+	<!-- Font Awesome -->
+	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+    <!-- Animation -->
+	<link href="/css/animate.css" rel="stylesheet" />
+	
+    <!-- MyTemplate CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+	
+</head>
+
+<body>
+	<header id="header-banner">
+		<nav class="navbar navbar-default navbar-fixed-top fadeIn" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dropdown-box-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand">
+						<a href="/pages/emeraldcraft/index.html">Emerald Craft</a>
+					</div>
+				</div>
+				
+				<!-- Collect the nav links and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-right" id="dropdown-box-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/pages/emeraldcraft/index.html">HOME</a></li>
+						<li><a href="/pages/emeraldcraft/about.html">ABOUT</a></li>
+						<li class="dropdown" role="presentation">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+							  CONTRIBUTE <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu bullet fadeIn" role="menu">
+							  <li><a href="#first">Upload Translation</a></li>
+							  <li><a href="#second">Bugs and Crashes</a></li>
+							  <li><a href="#third">Suggestions</a></li>
+							</ul>
+						</li>
+						<li><a href="https://www.curseforge.com/minecraft/mc-mods/emerald-craft-mod">DOWNLOAD</a></li>
+					</ul>
+				</div>
+			</div> <!-- /.container -->
+		</nav> <!-- /.nav -->
+	</header>
+		
+	<!-- banner -->
+    <section class="banner" id="home">
+		<div class="container">
+			<div style="display:inline-block" class="slogan">
+				<h2>棕榈木船</h2>
+				<h4></h4>
+			</div>
+			<div style="display:inline-block;float:right;background-color:#ffffff">
+				<div style="text-align:center;background-color:#bebeff;font-size:28px;font-weight:bold">棕榈木船</div>
+				<div style="padding: 10px 10px 10px 10px;text-align:center"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAE50lEQVR4XmP8//8/wygYuSHANBr5IzsERhMAw2gCGC0EGEargNFEMEJDYLQKGK0CRjM/w2gVMJoIRmoIsAy0x1W5eSkaiPj8/SteL7z4949xNHnjDoHRNsBoG2A0f4y2AUbTwIgNgdEqYLQKGM3+o1XAaBoYrQJG08DIDAGWwe5tPxY2vE5cyoB/HCBdQ2lQL3iYeePegI5TjDYCRxuBo4X/aCNwNA2MNgJH08DIDIHRNsBoG2A074+2AUbTwIgNAZrvCyA032//9zfewGdWkKIocnQMZSnSzyUuRpH+17cf4NV//+5bvPK0HicYbQOMtgFGy//RNsBoGhixITBaBYxWAaPZf7QKGE0Do1XAaBoYmSFA8TgAoX6+k6woRSFLaT/+66dvAxqzoqoKeO0f6HGC0UbgaCNwtPAfbQSOpoERGwKjVcBoFTCa/UergNE0MFoFjKaBkRkCLJT24wn18we6H79j92WKYjY42Jwi/YT6+YTGCQitF6A02Y42AkcbgaOF/2gjcDQNjDYCR9PAyAyB0TbAaBtgNO+PtgFG08CIDQGWwd6PJxQzE7afxaskmlcQr/xZAucMXjn/GK9+QuMc3HxcgzpxjbYBRtsAo+X/aBtgNA2M2BAYrQJGq4DR7D9aBYymgdEqYDQNjMwQYDn0Av/+dHNFZ7wh8+rihUEdcks/v8frPh82/OcQ3rz3jCL/UboeYuMt/OcLzKQw9EcbgaONwNHCf7QROJoGRmwIjFYBo1XAaPYfrQJG08BoFTCaBkZmCBC8L+Dr/Vt4Q0ZM3wCvPKFxAkrXvfurKVAUc4T62ZSOE5h5GON1X8fsHXjlPzPQtpk22ggcbQSOFv4jOQRGS4DREmC0BBgtAUbTwIgNgdEqYLQKGM3+IzkEGDX4+fDeq5flib+fT+g8fUYuAbzhe3Ld3gENfw1F/Ov2O3dew+s+QuMEW379wqvfg8B6hKPMrHj13/76maJ7B0ergNEqYLQKGMkhMFoCjJYAoyXAaAkwmgZGbAiMVgGjVcBo9h/JIcBCa8////YBrxXmQfj3HXw8fxyvfhYBYbzy3IpqeOUJua+cQAARGifQYMG/7+DtP/wWWDPgv1eR0DmPhMYJRquAEV4AjiaA0QQw2gYYySEwWgKMlgCjJcBoCTCaBkZsCIxWASM88RO8N5CbiQXveoFJeYE0DUJC6wkIWU5oXwMh/a0rD+NVQmg+n1A//zMBB/ASkBcmkIUJrScYLQFGeAkwmgBGE8BoC3Akh8BoCTBaAoyWAKMlwGgaGLEhMFoFjPDET/h8gH9/8K47H+hxAkr7+V8/fcObBAjtz1/96w9e/aFsBIKYwHoAQuMEwhQm4NESYLQRONoAGG0EjqaB0UbgaBoYmSEw2gYYbQOM5v3RNsBoGhixIUDxvoCvFI4TdIRb4w18bkX85wv8+YD/voOanTcoilxC/iNkOKFxEkLjBIT6+Q8IjCMwMON34WgbYLQNMFr+j7YBRtPAiA2B0SpgtAoYzf6jVcBoGhitAkbTwMgMAYL7AmgdLIT6yZTaT2k/fqj7n5D7RxuBo43A0cJ/tBE4mgZGbAiMVgGjVcBo9h+tAkbTwGgVMJoGRmYIDPg4wGjCG9gQGG0EjjYCR/PgaCNwNA2MNgJH08DIDIHRNsBoG2A074+2AUbTwIgNAQC0hscQxtLKoQAAAABJRU5ErkJggg=="/></div>
+				<div style="text-align:center;background-color:#dedede">emeraldcraft:palm_boat</div>
+			</div>
+			
+			<div class="btn-circle-scroll fadeIn">
+				<a href="#section-footer" class="btn-circle">
+					<i class="fa fa-angle-double-down animated"></i>
+				</a>
+			</div>
+		</div>
+    </section>
+	<!-- /.banner -->
+
+	<!-- abstract -->
+    <section class="abstract" id="abstract">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s"> 
+						<h2>Abstract</h2> 
+					</div>
+					<div class="col-sm-12">
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.abstract -->
+	
+	<!-- obtaining -->
+    <section class="obtaining" id="obtaining">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+					<h2>Obtaining</h2>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Breaking</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Trading</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.obtaining -->
+	
+	<!-- usage -->
+    <section class="usage" id="usage">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+					<h2>Usage</h2>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Crafting</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Smelting</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.usage -->
+	
+	<!-- footer -->
+	<footer id="section-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<div class="wow fadeIn" data-wow-delay="0.4s">
+						<div class="btn-circle-scroll">
+							<a href="#header-banner" class="btn-circle">
+								<i class="fa fa-angle-double-up animated"></i>
+							</a>
+						</div>
+					</div>
+					<p>Copyright &copy; 2022. MIT License. <a target="_blank" href="https://github.com/Viola-Siemens/Viola-Siemens.github.io">网页源码</a></p>
+				</div>
+			</div>	
+		</div>
+	</footer>
+	<!-- /.footer -->
+	
+	<!-- Core JavaScript Files -->
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.easing.min.js"></script>	
+	<script src="/js/jquery.scrollTo.js"></script>
+	<script src="/js/wow.min.js"></script>			<!-- Reveal animation when you scroll by wow.js. It need animate.css library -->
+	<!-- Custom Theme JavaScript -->
+	<script src="/js/custom.js"></script>
+</body>
+</html>
