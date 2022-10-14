@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>棕榈木运输船</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+	<!-- Font Awesome -->
+	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+    <!-- Animation -->
+	<link href="/css/animate.css" rel="stylesheet" />
+	
+    <!-- MyTemplate CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+	
+</head>
+
+<body>
+	<header id="header-banner">
+		<nav class="navbar navbar-default navbar-fixed-top fadeIn" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dropdown-box-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand">
+						<a href="/index.html">Emerald Craft</a>
+					</div>
+				</div>
+				
+				<!-- Collect the nav links and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-right" id="dropdown-box-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/index.html">HOME</a></li>
+						<li><a href="/about.html">ABOUT</a></li>
+						<li class="dropdown" role="presentation">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+							  CONTRIBUTE <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu bullet fadeIn" role="menu">
+							  <li><a href="#first">Upload Translation</a></li>
+							  <li><a href="#second">Bugs and Crashes</a></li>
+							  <li><a href="#third">Suggestions</a></li>
+							</ul>
+						</li>
+						<li><a href="https://www.curseforge.com/minecraft/mc-mods/emerald-craft-mod">DOWNLOAD</a></li>
+					</ul>
+				</div>
+			</div> <!-- /.container -->
+		</nav> <!-- /.nav -->
+	</header>
+		
+	<!-- banner -->
+    <section class="banner" id="home">
+		<div class="container">
+			<div style="display:inline-block" class="slogan">
+				<h2>棕榈木运输船</h2>
+				<h4>$Page-Description$</h4>
+			</div>
+			<div style="display:inline-block;float:right;background-color:#ffffff">
+				<div style="text-align:center;background-color:#bebeff;font-size:28px;font-weight:bold">棕榈木运输船</div>
+				<div style="padding: 10px 10px 10px 10px;text-align:center"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAFUklEQVR4XmP8//8/w1AG5oYaFHng5PkbjAwjGDAxjAKG0QQwmghGbAiMlgAjPPGPJoDRBDBa/o+2AUbTwGgbYDQNjMwQGPBxAEr78e56vymKuZ2XWPHqH+7jBKONwNFG4GjhP9oIHE0Do43A0TQwMkNgtA0w2gYYzfujbYDRNDBiQ4DicQBa9+MFuCjr50uwUlbLTTzMgTdxGHz/RVHimXnj3oCuRxhtA4y2AUbL/9E2wGgaGB0HGE0Do+MAo2lgBIbAaCNwtBE4mvFHcggQHAcg1M8Pt/iGN/wI9cNZuHnx6v/z9TNe+Re//+GVlxHgp6n5K09w4TU/UAq//+7ffYtXP63HCUargNEqYLQKGMkhMFoCjJYAoyXAaAkwmgZGbAiMVgGjVcBo9h/JIUDxOMDHd0/whl+dvwheeULjAIQih9A4Aa3NJzQOMdjHCUargNEqYLQKGO0FjKaB0V7AaBoYmSEw2gYYbQOM5v3RNsBoGhixIcCiys2L95w9ZhH8x/A56AvjDbymjW8IjBPgD3tC/WxCMbep9zZFkeuXLIZX/6xt7wiYj19e1N4Tr35C6wUoTbmjbYDRNgDDKBjBITBaAoyWAKMFAMNoCTCaCEZqCIxWAaNVwGjuH8khwOIkK4rX/we/v8Irf/8lO155SscJ0ryE8JrfNRP/eoRoXkG8+s9+/4pXnlA/n5D/Dlx8O6jT12gVMFoFjFYBIzkERkuA0RJgtAQYLQFG08CIDYHRKmC0ChjN/iM5BFgOvcDfTy3LisQbPku2Lscrf/+lFF55Qv3oWdso60cv/fwer/0+bGz44//5H/z+k2CnafrZeOsBXvNnUmj7aBUwWgUwjIIRHAKjJcBoCTBaADCMlgCjiWCkhsBoFTBaBYzm/pEcAowa/Hx4F/5neRrgDR9uRTW88oTGCVg58I8TKIr/xGs+ofl2QuMMG7Y8xms+oXGCO/iPKWSIzfLFa37H7B145Z99/45X/uu/PxTdNzBaBYxWAaNVwEgOgdESYLQEGC0BRkuA0TQwYkNgtAoYrQJGs/9IDgGKxwG4xPHvn2fkEsAbvpSOEzx88Qyv+fIS+McZfv/Ar//aZfz3IRAaJ9jyC/+9gh4E1iMcZWbF67/bXz+PjgOMlmHkh8BoG2C0DTCaf0a7gaNpYLQbOJoGRmYIjLYBRtsAo3l/JIcAC609///bB7xWxHhTtu+AkPvDne3xKiHkvk9S1/Hq79x5Da+8Bgv+fQdvCawnsGb4jdd8Quc8EhonGK0CRquA0SpgJIfAaAkwWgKMlgCjJcBoGhixITBaBYxWAaPZfySHAMF7A7mZWPDuG5iUF0jT8CO0noCQ5V/v36LIfa0rD+PVT2g+n1A//zMB1/ESkBcmUIYTWk8wWgWMVgGjVcBoL2A0DYzYEBitAkargNHsP1oFjKaB0SpgNA2MzBAguB6A0P7zgR4noLSf//UT/nX/nxnwN5NW/8J/jmAoG4EgJrAegNA4gTCF6Xa0ETjaCBwt/EcbgaNpYLQROJoGRmYIjLYBRtsAo3l/tA0wmgZGbAhQvC+A0nGCjnBrvIHPrYj/fIE/H/DfJ1Cz8wZFkUvpOXyExkkIjRMQ6uc/IDCOwMCM3/ujbYDRNsBo+T/aBhhNAyM2BEargNEqYDT7j1YBo2lgtAoYTQMjMwQI7gugdbAQ6idTaj+l/fih7n9C7h9tBI7wom80AYwmgNHaf7QXMJoGRnsBo2lgZIbAaBtgtA0wmvdHcggM+DjAaPIb2BAYrQJGq4DRPDiSQ2C0BBgtAUZLgNESYDQNjNgQGK0CRquA0ew/kkMAAB2LAX3E4eRqAAAAAElFTkSuQmCC"/></div>
+				<div style="text-align:center;background-color:#dedede">emeraldcraft:palm_chest_boat</div>
+			</div>
+			
+			<div class="btn-circle-scroll fadeIn">
+				<a href="#section-footer" class="btn-circle">
+					<i class="fa fa-angle-double-down animated"></i>
+				</a>
+			</div>
+		</div>
+    </section>
+	<!-- /.banner -->
+
+	<!-- abstract -->
+    <section class="abstract" id="abstract">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s"> 
+						<h2>Abstract</h2> 
+					</div>
+					<div class="col-sm-12">
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.abstract -->
+	
+	<!-- obtaining -->
+    <section class="obtaining" id="obtaining">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+					<h2>Obtaining</h2>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Breaking</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Trading</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.obtaining -->
+	
+	<!-- usage -->
+    <section class="usage" id="usage">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+					<h2>Usage</h2>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Crafting</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Smelting</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.usage -->
+	
+	<!-- footer -->
+	<footer id="section-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<div class="wow fadeIn" data-wow-delay="0.4s">
+						<div class="btn-circle-scroll">
+							<a href="#header-banner" class="btn-circle">
+								<i class="fa fa-angle-double-up animated"></i>
+							</a>
+						</div>
+					</div>
+					<p>Copyright &copy; 2022. MIT License. <a target="_blank" href="https://github.com/Viola-Siemens/Viola-Siemens.github.io">网页源码</a></p>
+				</div>
+			</div>	
+		</div>
+	</footer>
+	<!-- /.footer -->
+	
+	<!-- Core JavaScript Files -->
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.easing.min.js"></script>	
+	<script src="/js/jquery.scrollTo.js"></script>
+	<script src="/js/wow.min.js"></script>			<!-- Reveal animation when you scroll by wow.js. It need animate.css library -->
+	<!-- Custom Theme JavaScript -->
+	<script src="/js/custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>死灵刷怪蛋</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+	<!-- Font Awesome -->
+	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+    <!-- Animation -->
+	<link href="/css/animate.css" rel="stylesheet" />
+	
+    <!-- MyTemplate CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+	
+</head>
+
+<body>
+	<header id="header-banner">
+		<nav class="navbar navbar-default navbar-fixed-top fadeIn" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dropdown-box-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand">
+						<a href="/index.html">Emerald Craft</a>
+					</div>
+				</div>
+				
+				<!-- Collect the nav links and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-right" id="dropdown-box-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/index.html">HOME</a></li>
+						<li><a href="/about.html">ABOUT</a></li>
+						<li class="dropdown" role="presentation">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+							  CONTRIBUTE <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu bullet fadeIn" role="menu">
+							  <li><a href="#first">Upload Translation</a></li>
+							  <li><a href="#second">Bugs and Crashes</a></li>
+							  <li><a href="#third">Suggestions</a></li>
+							</ul>
+						</li>
+						<li><a href="https://www.curseforge.com/minecraft/mc-mods/emerald-craft-mod">DOWNLOAD</a></li>
+					</ul>
+				</div>
+			</div> <!-- /.container -->
+		</nav> <!-- /.nav -->
+	</header>
+		
+	<!-- banner -->
+    <section class="banner" id="home">
+		<div class="container">
+			<div style="display:inline-block" class="slogan">
+				<h2>死灵刷怪蛋</h2>
+				<h4>$Page-Description$</h4>
+			</div>
+			<div style="display:inline-block;float:right;background-color:#ffffff">
+				<div style="text-align:center;background-color:#bebeff;font-size:28px;font-weight:bold">死灵刷怪蛋</div>
+				<div style="padding: 10px 10px 10px 10px;text-align:center"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAEwklEQVR4XmP8//8/wygYuSHANBr5IzsERhMAw2gCGC0EGEargNFEMEJDYLQKGK0CRjM/w2gVMJoIGEargNFEMBJDYLQNMNoGGM35o22A0TTAMNoGGE0EDKNtgNFEMOJCYLQRONoIHM32IzkEWIa75xUYFfAuePjD8AdvEDz5/4RxOIfRaBUwWgWMVgEjOQRGS4DREmC0BBgtAUbTwIgNgdEqYLQKGM3+o+MAgzgEUlJSKNq4IMEggdd3vxl+45UnNI7gnOSMV//cuXMH9TjCaBUwWgWMVgGjvYDRNDBiQ2C0ChitAkaz/2gVMJoGRquA0TQwMkNgwM8HINTPl5aWxhszzMzMeOXl5OTwys9OnI1X/gfDD7zyNnk2eOU/fPiAV37hwoUDOk4w2ggcbQQyjIIRHAKjJcBoCTBaADCMlgCjiWCkhsBoFTBaBYzm/pEcAgO+L4DQOYWE+vm8vLx44+/v37945ZkY8BeCbAxsePVLSUnhlV87aS3+9LVwYJPfaBUwWgWMVgEjOQRGS4DREmC0BBgtAUbTwIgNgdEqYLQKGM3+IzkEaL4egNC6enEGcbzhn7UgC688oX7+/OT5ePX/Z8C/7eAvA/5xhF8MvyhKPy8ZXuLVT+vzCUargNEqYLQKGO0FjKaB0V7AaBoYmSEw2gYYbQOM5v3RNsBoGhixITDg4wCSDJJ4A5+ZAf+6f0Lz+f8Y/uE1n5C8a50rXv2vXr3CK39qxim88qPjAKOlz4CGwGgjcLQROJoFRxuBo2lgxIbAaBUwWgWMZv/RKmA0DYzYEKB4XwCh+X5C5/QxMuDfHp80Nwlv5PDz8+OV7wvpwytPaL5fVFQUr35C4wCEUhah9RAyjDJ4FyxQul5gtA0w2gYYLf9H2wCjaWDEhsBoFTBaBYxm/9EqYDQNjFYBo2lgZIYAxeMATolOeENOVlYWr/zupt145YWEhPDK9wT24JUn1M8nFO2LcxfjVULo3kFKkxWh9QqUmj/aCGQY2WA0AYwmAIZRMIJDYLQEGC0BRgsAhtESYDQRjNQQGK0CRnjap3gcgNA5f4Tmywntz+8N7MUbRYT0x0+Lx6t/QdaCAU0CBkkGeO1/Nu8ZTd03WgKMNgJH6//RRuBoGhixITBaBYxWAaPZf7QKGE0Do1XAaBoYmSEw6M8JJLRvwLvJG2/M/fnzB688pfv7zTLMKEo57969w6t/5cqVNL1XcLQRONoIHC38RxuBo2lgtBE4mgZGZgiMtgFG2wCjeX+0DTCaBkZsCAz4vYG/GX7jDXxC4wCU9vN///5N08j//PkzXvMJraegdcocbQOMtgFGy//RNsBoGhgdBxhNAyMzBEbbAKNtgNG8P9oGGE0DIzYEGAe6H0roHDxCMUPonD1ax+xzhud4rbAJtcErv2rVKsaBTH2jbYDRNsBo+T/aBhhNAyM2BEargNEqYDT7j1YBo2lgtAoYTQMjMwQGfByA0mAnNI7gEO2A1wpGRvzd8L1L9uLV/+z/M8ahnHRGG4GjjcDRwn+0ETiaBkZsCIxWAaNVwGj2H60CRtPAaBUwmgZGxwFG08AIDIHRRuBoI3A04482AkfTwGgjcDQNjMwQGG0DjLYBRvP+aBtgNA2M2BAAAJ0ftxV3RIDdAAAAAElFTkSuQmCC"/></div>
+				<div style="text-align:center;background-color:#dedede">emeraldcraft:wraith_spawn_egg</div>
+			</div>
+			
+			<div class="btn-circle-scroll fadeIn">
+				<a href="#section-footer" class="btn-circle">
+					<i class="fa fa-angle-double-down animated"></i>
+				</a>
+			</div>
+		</div>
+    </section>
+	<!-- /.banner -->
+
+	<!-- abstract -->
+    <section class="abstract" id="abstract">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s"> 
+						<h2>Abstract</h2> 
+					</div>
+					<div class="col-sm-12">
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.abstract -->
+	
+	<!-- obtaining -->
+    <section class="obtaining" id="obtaining">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+					<h2>Obtaining</h2>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Breaking</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Trading</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.obtaining -->
+	
+	<!-- usage -->
+    <section class="usage" id="usage">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+					<h2>Usage</h2>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Crafting</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Smelting</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.usage -->
+	
+	<!-- footer -->
+	<footer id="section-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<div class="wow fadeIn" data-wow-delay="0.4s">
+						<div class="btn-circle-scroll">
+							<a href="#header-banner" class="btn-circle">
+								<i class="fa fa-angle-double-up animated"></i>
+							</a>
+						</div>
+					</div>
+					<p>Copyright &copy; 2022. MIT License. <a target="_blank" href="https://github.com/Viola-Siemens/Viola-Siemens.github.io">网页源码</a></p>
+				</div>
+			</div>	
+		</div>
+	</footer>
+	<!-- /.footer -->
+	
+	<!-- Core JavaScript Files -->
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.easing.min.js"></script>	
+	<script src="/js/jquery.scrollTo.js"></script>
+	<script src="/js/wow.min.js"></script>			<!-- Reveal animation when you scroll by wow.js. It need animate.css library -->
+	<!-- Custom Theme JavaScript -->
+	<script src="/js/custom.js"></script>
+</body>
+</html>
