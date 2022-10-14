@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>连续采矿机</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+	<!-- Font Awesome -->
+	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+    <!-- Animation -->
+	<link href="/css/animate.css" rel="stylesheet" />
+	
+    <!-- MyTemplate CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+	
+</head>
+
+<body>
+	<header id="header-banner">
+		<nav class="navbar navbar-default navbar-fixed-top fadeIn" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dropdown-box-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand">
+						<a href="/pages/emeraldcraft/index.html">Emerald Craft</a>
+					</div>
+				</div>
+				
+				<!-- Collect the nav links and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-right" id="dropdown-box-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/pages/emeraldcraft/index.html">HOME</a></li>
+						<li><a href="/pages/emeraldcraft/about.html">ABOUT</a></li>
+						<li class="dropdown" role="presentation">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+							  CONTRIBUTE <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu bullet fadeIn" role="menu">
+							  <li><a href="#first">Upload Translation</a></li>
+							  <li><a href="#second">Bugs and Crashes</a></li>
+							  <li><a href="#third">Suggestions</a></li>
+							</ul>
+						</li>
+						<li><a href="https://www.curseforge.com/minecraft/mc-mods/emerald-craft-mod">DOWNLOAD</a></li>
+					</ul>
+				</div>
+			</div> <!-- /.container -->
+		</nav> <!-- /.nav -->
+	</header>
+		
+	<!-- banner -->
+    <section class="banner" id="home">
+		<div class="container">
+			<div style="display:inline-block" class="slogan">
+				<h2>连续采矿机</h2>
+				<h4></h4>
+			</div>
+			<div style="display:inline-block;float:right;background-color:#ffffff">
+				<div style="text-align:center;background-color:#bebeff;font-size:28px;font-weight:bold">连续采矿机</div>
+				<div style="padding: 10px 10px 10px 10px;text-align:center"><img src="data:image/png;base64,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"/></div>
+				<div style="text-align:center;background-color:#dedede">emeraldcraft:continuous_miner</div>
+			</div>
+			
+			<div class="btn-circle-scroll fadeIn">
+				<a href="#section-footer" class="btn-circle">
+					<i class="fa fa-angle-double-down animated"></i>
+				</a>
+			</div>
+		</div>
+    </section>
+	<!-- /.banner -->
+
+	<!-- abstract -->
+    <section class="abstract" id="abstract">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s"> 
+						<h2>Abstract</h2> 
+					</div>
+					<div class="col-sm-12">
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.abstract -->
+	
+	<!-- obtaining -->
+    <section class="obtaining" id="obtaining">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+					<h2>Obtaining</h2>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Breaking</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Trading</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.obtaining -->
+	
+	<!-- usage -->
+    <section class="usage" id="usage">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+					<h2>Usage</h2>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Crafting</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>Smelting</h4>
+						<p>
+							
+						</p>
+						<p>
+							
+						</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<!-- /.usage -->
+	
+	<!-- footer -->
+	<footer id="section-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<div class="wow fadeIn" data-wow-delay="0.4s">
+						<div class="btn-circle-scroll">
+							<a href="#header-banner" class="btn-circle">
+								<i class="fa fa-angle-double-up animated"></i>
+							</a>
+						</div>
+					</div>
+					<p>Copyright &copy; 2022. MIT License. <a target="_blank" href="https://github.com/Viola-Siemens/Viola-Siemens.github.io">网页源码</a></p>
+				</div>
+			</div>	
+		</div>
+	</footer>
+	<!-- /.footer -->
+	
+	<!-- Core JavaScript Files -->
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.easing.min.js"></script>	
+	<script src="/js/jquery.scrollTo.js"></script>
+	<script src="/js/wow.min.js"></script>			<!-- Reveal animation when you scroll by wow.js. It need animate.css library -->
+	<!-- Custom Theme JavaScript -->
+	<script src="/js/custom.js"></script>
+</body>
+</html>
