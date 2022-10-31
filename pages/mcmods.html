@@ -63,7 +63,7 @@
 			<div class="about">
 				<div class="container">
 					<div class="about-grids">
-						<div class="col-md-6 service-grid" id="services">
+						<div class="col-md-12 service-grid" id="services">
 							<h3>按模组名</h3>
 							<div class="ser-grids">
 								<div class="col-md-3 ser-grid">
@@ -74,11 +74,21 @@
 									<a href="/pages/oceanworld/index.html"><img src="/img/oceanworld.png"/></a>
 									<a href="/pages/oceanworld/index.html"><h5>海洋的世界</h5></a>
 								</div>
+								<div class="col-md-3 ser-grid">
+									<a href="/pages/real_peaceful_mode/index.html"><img src="/img/real_peaceful_mode.png"/></a>
+									<a href="/pages/real_peaceful_mode/index.html"><h5>真正的和平模式</h5></a>
+								</div>
 								<div class="clearfix"></div>
 							</div>
-							<div style="float:right" id="search-box">
-								<form action="/pages/search.html" method="GET">
-									
+							<div align="right" id="search-box">
+								<form id="global-search-form" action="/pages/search.html" method="GET">
+									<input class="contact-info" style="width: 50%;height: 40px;font-size: 20px;padding-left: 10px;padding-right: 10px;" type="text" name="kw" placeholder="按关键词全局搜索..." value=""/>
+									<button style="height: 40px;width: 40px;padding-top: 6px;padding-bottom: 0px;" onclick="GlobalSearch()"><img src="/img/icons/search.png" style="padding-bottom: 8px;"/></button>
+									<script type="javascript">
+										function GlobalSearch() {
+											document.getElementById("global-search-form").submit();
+										}
+									</script>
 								</form>
 							</div>
 						</div>

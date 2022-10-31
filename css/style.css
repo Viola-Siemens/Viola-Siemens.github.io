@@ -6,30 +6,37 @@
  *	Header                  *
  ****************************/
 .container {
-  width: 95%; }
+  width: 95%;
+}
 
 .navbar {
   min-height: 50px;
   margin-bottom: 0px;
-  border: 1px solid transparent; }
+  border: 1px solid transparent;
+}
 
 .navbar .nav > li {
   position: relative;
-  display: block; }
+  display: block;
+}
 
 .navbar-default {
   background-color: #49de49;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
 
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: #efefef; }
+  background-color: #efefef;
+}
 
 .navbar-default .navbar-toggle {
-  border-color: #efefef; }
+  border-color: #efefef;
+}
 
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-  background-color: rgba(55, 200, 55, 0.9); }
+  background-color: rgba(55, 200, 55, 0.9);
+}
 
 .navbar-default .navbar-brand a {
   font-family: Trebuchet MS, snas-serif;
@@ -60,7 +67,8 @@
 .navbar-default .navbar-nav > .open > a:hover {
   color: #efefef;
   background-color: #5fe45f;
-  border-bottom: solid 2px transparent; }
+  border-bottom: solid 2px transparent;
+}
 
 .dropdown-menu {
   position: absolute;
