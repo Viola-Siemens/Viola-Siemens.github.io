@@ -296,7 +296,12 @@ section p {
     width: 100%;
 }
 .obtaining {
-  background-color: #f9f9f9; }
+  background-color: #f9f9f9;
+}
+
+.ab_b, .ab_d, .ab_f, .ab_h, .ab_j, .ab_l, .ab_n, .ab_p, .ab_r, .ab_t, .ab_v, .ab_x, .ab_z {
+  background-color: #f9f9f9;
+}
 
 .inner {
   text-align: left; }
