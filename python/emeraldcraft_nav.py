@@ -29,8 +29,8 @@ pinyin = Pinyin()
 
 def build_section(charab, extra):
     if(extra == None):
-        return '<section class="ab_%s" id="alphabet-sorted-%s">\n\t\t<div class="container">\n\t\t\t<div class="row">\n\t\t\t\t<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">\n\t\t\t\t\t<h2>%s</h2>\n\t\t\t\t\t<div class="col-sm-12">\n\t\t\t\t\t\t<h4><br/></h4>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</section>\n'%(charab, charab, charab.upper())
-    return '<section class="ab_%s" id="alphabet-sorted-%s">\n\t\t<div class="container">\n\t\t\t<div class="row">\n\t\t\t\t<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">\n\t\t\t\t\t<h2>%s</h2>\n\t\t\t\t\t<div class="col-sm-12">\n%s\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</section>\n'%(charab, charab, charab.upper(), extra)
+        return '<section class="ab_%s" id="alphabet-sorted-%s">\n\t\t<div class="container">\n\t\t\t<div class="row">\n\t\t\t\t<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">\n\t\t\t\t\t<h2>%s</h2>\n\t\t\t\t\t<div class="col-sm-12">\n\t\t\t\t\t\t<h4><br/></h4>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</section>\n\t'%(charab, charab, charab.upper())
+    return '<section class="ab_%s" id="alphabet-sorted-%s">\n\t\t<div class="container">\n\t\t\t<div class="row">\n\t\t\t\t<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">\n\t\t\t\t\t<h2>%s</h2>\n\t\t\t\t\t<div class="col-sm-12">\n%s\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</section>\n\t'%(charab, charab, charab.upper(), extra)
 
 for typ in ["blocks", "items", "entities"]:
     for i in range(len(eval(typ))):

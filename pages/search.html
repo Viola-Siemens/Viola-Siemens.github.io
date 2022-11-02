@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>绿宝石工艺</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+	<!-- Font Awesome -->
+	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+	
+	<!-- Animation -->
+	<link href="/css/animate.css" rel="stylesheet" />
+	
+	<!-- MyTemplate CSS -->
+	<link href="/css/style.css" rel="stylesheet">
+	
+	<style>
+	td.thanks-table-cell {
+	  padding-left: 10px;
+	  padding-right: 10px;
+	  padding-top: 4px;
+	  padding-bottom: 4px;
+	}
+
+	th.thanks-table-cell {
+	  padding-left: 10px;
+	  padding-right: 10px;
+	  padding-top: 4px;
+	  padding-bottom: 4px;
+	}
+	</style>
+	
+</head>
+
+<body>
+	<header id="header-banner">
+		<nav class="navbar navbar-default navbar-fixed-top fadeIn" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dropdown-box-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand">
+						<a href="/pages/emeraldcraft/index.html">Emerald Craft</a>
+					</div>
+				</div>
+				
+				<!-- Collect the nav links and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-right" id="dropdown-box-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/pages/emeraldcraft/index.html">HOME</a></li>
+						<li><a href="/pages/emeraldcraft/about.html">ABOUT</a></li>
+						<li class="dropdown" role="presentation">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+							  CONTRIBUTE <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu bullet fadeIn" role="menu">
+							  <li><a href="https://www.curseforge.com/members/viola_siemens/projects">Upload Translation</a></li>
+							  <li><a href="https://github.com/Viola-Siemens/EmeraldCraftMod/issues">Bugs and Crashes</a></li>
+							  <li><a href="https://www.curseforge.com/minecraft/mc-mods/emerald-craft-mod#reply">Suggestions</a></li>
+							</ul>
+						</li>
+						<li><a href="https://www.curseforge.com/minecraft/mc-mods/emerald-craft-mod">DOWNLOAD</a></li>
+					</ul>
+				</div>
+			</div> <!-- /.container -->
+		</nav> <!-- /.nav -->
+	</header>
+		
+	<!-- banner -->
+	<section class="banner" style="padding-top:10%;" id="home">
+		<div class="container">
+			<div style="display:inline-block" class="slogan">
+				<h2 style="margin-top: 80px; margin-bottom: 40px;">搜索</h2>
+			</div>
+			<div class="btn-circle-scroll fadeIn">
+				<a href="#section-footer" class="btn-circle">
+					<i class="fa fa-angle-double-down animated"></i>
+				</a>
+				<h4><br/></h4>
+				<h4><br/></h4>
+			</div>
+			<div align="center" id="search-box">
+				<form id="global-search-form" action="/pages/search.html" method="GET">
+					<input class="contact-info" style="width: 50%;height: 40px;font-size: 20px;padding-left: 10px;padding-right: 10px;" type="text" name="kw" placeholder="按关键词搜索绿宝石工艺..." value=""/>
+					<input class="contact-info" hidden type="text" name="page" value="emeraldcraft"/>
+					<button style="height: 40px;width: 40px;padding-top: 6px;padding-bottom: 0px;" onclick="GlobalSearch()"><img src="/img/icons/search.png" style="padding-bottom: 8px;"/></button>
+					<script type="text/javascript">
+						function GlobalSearch() {
+							document.getElementById("global-search-form").submit();
+						}
+					</script>
+				</form>
+			</div>
+			<div style="margin-top: 40px;" class="slogan" id="search-result">
+				<h4>共找到<span id="search-count">0</span>条结果。</h4>
+			</div>
+		</div>
+	</section>
+	<!-- /.banner -->
+	
+	<!-- footer -->
+	<footer id="section-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<div class="wow fadeIn" data-wow-delay="0.4s">
+						<div class="btn-circle-scroll">
+							<a href="#header-banner" class="btn-circle">
+								<i class="fa fa-angle-double-up animated"></i>
+							</a>
+						</div>
+					</div>
+					<p>Copyright &copy; 2022. Apache 2.0 License. <a target="_blank" href="https://github.com/Viola-Siemens/Viola-Siemens.github.io">网页源码</a></p>
+				</div>
+			</div>	
+		</div>
+	</footer>
+	<!-- /.footer -->
+	
+	<script type="text/javascript" src="./emeraldcraft/index.js"></script>
+	<script type="text/javascript" src="./search.js"></script>
+	<script type="text/javascript" src="./work.js"></script>
+	<!-- Core JavaScript Files -->
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.easing.min.js"></script>	
+	<script src="/js/jquery.scrollTo.js"></script>
+	<script src="/js/wow.min.js"></script>			<!-- Reveal animation when you scroll by wow.js. It need animate.css library -->
+	<!-- Custom Theme JavaScript -->
+	<script src="/js/custom.js"></script>
+</body>
+</html>
