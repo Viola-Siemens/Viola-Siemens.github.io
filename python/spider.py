@@ -86,8 +86,8 @@ for j in range(len(contents)):
         counts[i][j] = cws.count(words[i])
         tfs[i][j] = cws.count(words[i]) / len(cws)
 
-print(words)
-print([sum([(1 if counts[i][j] > 0 else 0) for j in range(len(contents))]) for i in range(len(words))])
+#print(words)
+#print([sum([(1 if counts[i][j] > 0 else 0) for j in range(len(contents))]) for i in range(len(words))])
 
 #idf
 idfs = [log(len(contents)) - log(sum([(1 if counts[i][j] > 0 else 0) for j in range(len(contents))])) for i in range(len(words))]
