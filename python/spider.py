@@ -95,26 +95,29 @@ idfs = [log(len(contents)) - log(sum([(1 if counts[i][j] > 0 else 0) for j in ra
 tf_idfs = [[tfs[i][j] * idfs[i] for j in range(len(contents))] for i in range(len(words))]
 
 with open("words.txt", mode="w", encoding="utf8") as f:
+    f.writelines('\t\t')
     for i in range(len(words)):
         f.writelines('"%s",'%words[i])
         if(i % 10 == 9):
-            f.writelines('\n')
+            f.writelines('\n\t\t')
         else:
             f.writelines(' ')
 
 with open("pages.txt", mode="w", encoding="utf8") as f:
     for i in range(len(hrefs)):
-        f.writelines('"%s",\n'%hrefs[i])
+        f.writelines('\t\t"%s",\n'%hrefs[i])
 
 with open("titles.txt", mode="w", encoding="utf8") as f:
     for i in range(len(titles)):
-        f.writelines('"%s",\n'%titles[i])
+        f.writelines('\t\t"%s",\n'%titles[i])
 
 with open("tf_idfs.txt", mode="w", encoding="utf8") as f:
     for i in range(len(tf_idfs)):
+        f.writelines('\t\t[')
         for j in range(len(tf_idfs[i])):
-            if(tf_idfs[i][j] < 1e-8):
-                f.writelines('0, ');
+            endc = "],\n" if(j == len(tf_idfs[i]) - 1) else ", "
+            if(tf_idfs[i][j] < 1e-10):
+                f.writelines('0');
             else:
-                f.writelines('%.8f, '%tf_idfs[i][j])
-        f.writelines("\n")
+                f.writelines('%.10f'%tf_idfs[i][j])
+            f.writelines(endc)
