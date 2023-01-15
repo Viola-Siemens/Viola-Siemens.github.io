@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>计算机拔尖基地C语言期末考试题解</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+	<!-- Font Awesome -->
+	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+	<!-- Animation -->
+	<link href="/css/animate.css" rel="stylesheet" />
+	
+	<!-- MyTemplate CSS -->
+	<link href="/css/style-blog.css" rel="stylesheet">
+</head>
+
+<body style="">
+	<script type="text/javascript">
+		document.getElementsByTagName("body")[0].getAttributeNode("style").value = `background-image: url(/img/background/${Math.floor(Math.random() * 3) + 1}.jpg); background-attachment: fixed; background-size:100%`;
+	</script>.
+	
+	<header id="header-banner">
+		<nav class="navbar navbar-default navbar-fixed-top fadeIn" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dropdown-box-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand">
+						<a href="/index.html">私有链接</a>
+					</div>
+				</div>
+				
+				<!-- Collect the nav links and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-right" id="dropdown-box-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/index.html">主页</a></li>
+						<li><a href="Mailto: 10185101162@stu.ecnu.edu.cn">联系我</a></li>
+					</ul>
+				</div>
+			</div> <!-- /.container -->
+		</nav> <!-- /.nav -->
+	</header>
+		
+	<!-- banner -->
+	<section class="banner" id="home">
+		<div class="container">
+			<div style="display:inline-block" class="slogan">
+				<h2>计算机拔尖基地C语言期末考试题解</h2>
+				<h4>注意：本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 协议</a>。<br/>本文作者享有对本文内容的著作权，使用者不得进行商业使用，对本文的演绎著作需要以相同形式共享。</h4>
+			</div>
+			<div style="display:inline-block;float:right;background-color:rgba(255, 255, 255, 0.8)">
+				<div style="padding: 10px 10px 10px 10px;text-align:center"><img width="360px" src="/img/blogs/2023-1-15-1.png"/></div>
+			</div>
+			
+			<div class="btn-circle-scroll fadeIn">
+				<a href="#section-footer" class="btn-circle">
+					<i class="fa fa-angle-double-down animated"></i>
+				</a>
+			</div>
+		</div>
+	</section>
+	<!-- /.banner -->
+
+	<!-- abstract -->
+	<section class="ab_a" id="ab_a">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s"> 
+						<h2>前言</h2> 
+					</div>
+					<div class="col-sm-12">
+						<p>
+							2022年12月29日，计算机拔尖基地的程序设计课程展开了本次C语言期末考试。考试分为三道题，主要考察C语言基础知识、数组、字符串、排序和递归等知识点。<br/>
+							不可否认，这次题目我似乎不小心出难了一点……<br/>
+							<img width="300px" src="/img/blogs/2023-1-15-2.png"/><br/>
+							不过每道题目都没有超纲的知识，思维量和代码量的提升，使得在仅有的1.5小时内完成这三题的难度提升。<del>不过也发现了个道理，那就是文字描述越短的题目越难。</del><br/>
+							废话不多说，接下来就是对这三道题的题解和参考代码的公布。
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /.abstract -->
+	
+	<!-- obtaining -->
+	<section class="ab_b" id="ab_b">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+						<h2>【A】圣诞树</h2>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>题目描述</h4>
+						<p>
+							随着夜晚降临得越来越早，大伙们也裹上了厚厚的羽绒服，Viola知道，终于又到了一年一度的<del>白色相簿</del>，不，是圣诞的季节。<br/>
+							Viola数着街上的圣诞树，发现道路两旁的圣诞树，悬挂的装饰品数量不尽相同。她想知道，一共有多少棵圣诞树悬挂了质数数量个装饰品。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>输入输出描述</h4>
+						<p>
+							输入第一行一个整数n，代表圣诞树的数量。<br/>
+							接下来一行n个整数a_i，每个整数代表一颗圣诞树的装饰品数量。<br/>
+							对于70%的输入，n &le; 1000，a_i &le; 1000。<br/>
+							对于100%的输入，1 &le; n &le; 200,000，0 &le; a_i &le; 100,000。<br/>
+							<br/>
+							输出一个整数，代表一共有多少棵圣诞树悬挂了质数数量个装饰品。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="third"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>思考</h4>
+						<p>
+							语言基础题，考察知识点主要是循环的编写和质数的判断。<br/>
+							我们知道，质数是大于1的，仅能被1和本身整除的<del>孤独的</del>正整数。那么如何判断质数呢？<br/>
+							很简单，根据定义，对于整数a，将2到a-1的每个数i分别做判断，如果a%i == 0，那么a就不是质数，否则a是质数。<br/>
+							然而事实是残酷的，如果这样做，只能通过9个测试点。为什么呢？<del>数个质数冷静一下。</del><br/>
+							<img width="400px" src="/img/blogs/2023-1-15-4.png"/><br/>
+							注意数据规模，如果n=200000，a&asymp;100000且a是质数，那么这个算法的时间成本是O(na)，数量级超过了1e10，肯定会超时。<br/>
+							这个算法有很明显的优化空间，如果小于等于&radic;<span style="text-decoration: overline;">a</span>的所有正整数都不能整除a，那么大于&radic;<span style="text-decoration: overline;">a</span>的正整数会整除a吗？显然不会！<br/>
+							想不明白的同学可以用反证法，假设存在这样一个i使得a%i == 0，那么a除以i必然小于&radic;<span style="text-decoration: overline;">a</span>，可是已知小于等于&radic;<span style="text-decoration: overline;">a</span>的数都不能整除a，与题设矛盾，因而不存在。<br/>
+							那么，上述方法可以稍加改进，将2到[&radic;<span style="text-decoration: overline;">a</span>+1]的每个数i分别做判断，如果a%i == 0，那么a就不是质数，否则a是质数。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="forth"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>参考代码</h4>
+						<pre>
+#include&nbsp;&lt;stdio.h&gt;
+#include&nbsp;&lt;math.h&gt;
+#include&nbsp;&lt;stdbool.h&gt;
+
+bool&nbsp;isPrime(int&nbsp;a)&nbsp;{
+	if(a&nbsp;&lt;&nbsp;2)&nbsp;return&nbsp;false;
+	if(a&nbsp;&lt;&nbsp;4)&nbsp;return&nbsp;true;
+	int&nbsp;m&nbsp;=&nbsp;sqrt(a)&nbsp;+&nbsp;1;	//降低运行时间至O(sqrt(a))
+	for(int&nbsp;i&nbsp;=&nbsp;2;&nbsp;i&nbsp;&lt;=&nbsp;m;&nbsp;++i)&nbsp;{
+		if(a&nbsp;%&nbsp;i&nbsp;==&nbsp;0)&nbsp;{
+			return&nbsp;false;
+		}
+	}
+	return&nbsp;true;
+}
+
+int&nbsp;main()&nbsp;{
+	int&nbsp;n;
+	scanf(&quot;%d&quot;,&nbsp;&amp;n);
+	int&nbsp;ans&nbsp;=&nbsp;0;
+	for(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;n;&nbsp;++i)&nbsp;{
+		int&nbsp;a;
+		scanf(&quot;%d&quot;,&nbsp;&amp;a);
+		if(isPrime(a))&nbsp;{
+			++ans;
+		}
+	}
+	printf(&quot;%d\n&quot;,&nbsp;ans);
+	
+	return&nbsp;0;
+}
+						</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /.obtaining -->
+	
+	<!-- usage -->
+	<section class="ab_c" id="ab_c">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+						<h2>【B】字母ABC</h2>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>题目描述</h4>
+						<p>
+							Viola在教小朋友们认识英文字母。<br/>
+							第一课是ABC，Viola拿出写有ABC的卡片，它们的字体大小各异，但字形结构完整，随意拉伸但不会拉断（即，相同字母的不同卡片保证与标准印刷体的对应字母拓扑等价）。<br/>
+							Viola希望，你也可以认识这三个字母。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>输入输出描述</h4>
+						<p>
+							输入第一行一个整数t，代表Viola展示了t张卡片。<br/>
+							接下来的t组输入，每组先是一行两个整数n, m，代表卡片的尺寸（n行m列）；接下来n行，每行m个字符，代表卡片的内容。0代表白色背景，1代表黑色笔迹。<br/>
+							对于20%的数据，n, m &le; 30。<br/>
+							对于另外10%的数据，字母是顶格的，即笔迹和卡片边缘是接触的。<br/>
+							对于100%的数据，3 &le; t &le; 8，10 &le; n, m &le; 50，且卡片一定是ABC中的某个字母。<br/>
+							黑色的笔迹只要上下左右四个方向、以及斜向的四个方向与其他黑色笔迹相连，即可认为这两处笔迹相连（即连通）。<br/>
+							<br/>
+							输出t行，对于Viola展示的每张卡片，输出其对应的字母是ABC中的哪一个。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="third"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>思考</h4>
+						<p>
+							搜索题。考察学生对递归函数的代码编写能力以及对搜索算法的掌握。<br/>
+							这道题乍一看似乎没啥头绪，仔细一看也好像没啥头绪，<del>总不会要用卷积神经网络吧，</del>这咋办？<br/>
+							如果不给提示，这道题可以作为竞赛题来出题了。不过完全可以根据提示作答：A字母将背景分为两个连通块，而B字母则将背景分为三个连通块，C字母使背景依然是连通的，这是使得三个字母特征不同的依据。因此我们需要搜索出白色背景有几个四连通块。<br/>
+							所谓“四连通块”，指只有上下左右接触才算连通，对于一个0，如果它上下左右都是1，就算斜向有0，那它也是独自成为一个连通块；相对的，连通斜向的连通块是八连通块——根据题意，黑色笔迹必然只有一个八连通块，而根据数写的字母不同，背景可能有1、2、3个四连通块。<br/>
+							那么问题就迎刃而解了，可以使用深度优先搜索遍历整张点阵图，统计一共遍历到几个'0'字符的四连通块：如果是一个，输出C；如果是两个，输出A；如果是三个，输出B。<br/>
+							不过题目当然设了一个坑，有一个测试点的字母是顶格的，这意味着最外侧一圈的'0'的连接也会被切断，增加四连通块的数量使我们判断错误。如何避免？<br/>
+							很简单，在输入图像时有意识地补一圈'0'，将最外侧一圈的白色背景的连接补回来。<br/>
+							另外这道题目也有其它通用解法，不过在考场上没有见到。本题因为凑巧ABC三个字母两两拓扑不等价，因而可以使用这一特殊解法。这也为我们以后学习和生活中遇到看似不可解的难题提供了解决思路——学会寻找目标的足以区分彼此的特殊性质。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="forth"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>参考代码</h4>
+						<pre>
+#include&nbsp;&lt;stdio.h&gt;
+#include&nbsp;&lt;string.h&gt;
+#include&nbsp;&lt;stdbool.h&gt;
+
+//四连通块的转移方向：右左下上
+const&nbsp;int&nbsp;move[4][2]&nbsp;=&nbsp;{
+	{1,&nbsp;0},&nbsp;{-1,&nbsp;0},&nbsp;{0,&nbsp;1},&nbsp;{0,&nbsp;-1}
+};
+
+//深度优先搜索
+void&nbsp;dfs(char&nbsp;buff[64][64],&nbsp;bool&nbsp;vis[64][64],&nbsp;int&nbsp;n,&nbsp;int&nbsp;m,&nbsp;int&nbsp;i,&nbsp;int&nbsp;j)&nbsp;{
+	vis[i][j]&nbsp;=&nbsp;true;
+	for(int&nbsp;k&nbsp;=&nbsp;0;&nbsp;k&nbsp;&lt;&nbsp;4;&nbsp;++k)&nbsp;{
+		int&nbsp;di&nbsp;=&nbsp;i&nbsp;+&nbsp;move[k][0];
+		int&nbsp;dj&nbsp;=&nbsp;j&nbsp;+&nbsp;move[k][1];
+		if(di&nbsp;&gt;=&nbsp;0&nbsp;&amp;&amp;&nbsp;dj&nbsp;&gt;=&nbsp;0&nbsp;&amp;&amp;&nbsp;di&nbsp;&lt;&nbsp;n&nbsp;&amp;&amp;&nbsp;dj&nbsp;&lt;&nbsp;m&nbsp;&amp;&amp;&nbsp;buff[di][dj]&nbsp;==&nbsp;'0'&nbsp;&amp;&amp;&nbsp;!vis[di][dj])&nbsp;{
+			dfs(buff,&nbsp;vis,&nbsp;n,&nbsp;m,&nbsp;di,&nbsp;dj);
+		}
+	}
+}
+
+int&nbsp;main()&nbsp;{
+	int&nbsp;t,&nbsp;n,&nbsp;m;
+	//保存点阵图、是否搜过的visit标记
+	char&nbsp;buff[64][64];
+	bool&nbsp;vis[64][64];
+	scanf(&quot;%d&quot;,&nbsp;&amp;t);
+	while(t--)&nbsp;{
+		scanf(&quot;%d%d&quot;,&nbsp;&amp;n,&nbsp;&amp;m);
+		//读入点阵图，注意补一圈0，否则无法通过笔记与卡片边缘接触的那个测试点
+		for(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;n;&nbsp;++i)&nbsp;{
+			buff[i&nbsp;+&nbsp;1][0]&nbsp;=&nbsp;'0';
+			scanf(&quot;%s&quot;,&nbsp;buff[i&nbsp;+&nbsp;1]&nbsp;+&nbsp;1);
+			buff[i&nbsp;+&nbsp;1][m&nbsp;+&nbsp;1]&nbsp;=&nbsp;'0';
+		}
+		for(int&nbsp;j&nbsp;=&nbsp;0;&nbsp;j&nbsp;&lt;&nbsp;m&nbsp;+&nbsp;2;&nbsp;++j)&nbsp;{
+			buff[0][j]&nbsp;=&nbsp;buff[n&nbsp;+&nbsp;1][j]&nbsp;=&nbsp;'0';
+		}
+		//重置visit二维数组
+		memset(vis,&nbsp;0,&nbsp;sizeof(vis));
+		//执行递归搜索
+		int&nbsp;ans&nbsp;=&nbsp;0;
+		for(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;n&nbsp;+&nbsp;2;&nbsp;++i)&nbsp;{
+			for(int&nbsp;j&nbsp;=&nbsp;0;&nbsp;j&nbsp;&lt;&nbsp;m&nbsp;+&nbsp;2;&nbsp;++j)&nbsp;{
+				if(buff[i][j]&nbsp;==&nbsp;'0'&nbsp;&amp;&amp;&nbsp;!vis[i][j])&nbsp;{
+					//发现新的没有搜过的背景区域，将与其联通的所有像素点标记visit
+					ans&nbsp;+=&nbsp;1;
+					dfs(buff,&nbsp;vis,&nbsp;n&nbsp;+&nbsp;2,&nbsp;m&nbsp;+&nbsp;2,&nbsp;i,&nbsp;j);
+				}
+			}
+		}
+		//判断'0'有几个四连通块
+		switch(ans)&nbsp;{
+			case&nbsp;1:
+				printf(&quot;C\n&quot;);
+				break;
+			case&nbsp;2:
+				printf(&quot;A\n&quot;);
+				break;
+			case&nbsp;3:
+				printf(&quot;B\n&quot;);
+				break;
+			default:
+				//这部分代码不可能运行，否则就是数据出问题了
+				printf(&quot;ERROR!\n&quot;);
+				break;
+		}
+	}
+	
+	return&nbsp;0;
+}
+						</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /.usage -->
+	
+	<section class="ab_d" id="ab_d">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+						<h2>【C】世界杯</h2>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>题目描述</h4>
+						<p>
+							Viola前些日子和她的闺蜜们一起看世界杯。<br/>
+							Viola沉迷于球队多变的战术和球员闪耀的个人能力，而她的闺蜜们沉迷于球员们的颜值。<br/>
+							Viola想知道，在n名她们关注的球员中，球技排在前m名的球员且颜值排在前k名的球员一共有多少。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>输入输出描述</h4>
+						<p>
+							第一行三个整数n, m, k，代表备选球员的数量是n，球技最低排名m和颜值最低排名k。<br/>
+							接下来n行，每行由一个字符串和两个整数组成，分别表示球员名字、球员球技和球员颜值。<br/>
+							对于100%的数据，3 &le; m, k &lt; n &le; 200，且-1000 &le; 球技、颜值 &le; 1000，球员姓名不超过14个字符。<br/>
+							输入保证每个球员的球技和颜值都是独立的，且最终的列表至少有一位球员。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="third"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>思考</h4>
+						<p>
+							排序题，考察学生对排序的代码能力。<br/>
+							而排序的核心代码可以自己实现，也可以使用stdlib.h的qsort函数。显然，程序员们最忌讳重复造轮子，所以使用qsort是最容易的。<br/>
+							这道题目充分展现了函数化编程的优势——排序任务进行三次，如果每次排序都写在main函数内，整个main都会显得很臃肿而冗余。因此如果自己实现排序，最好也是封装成函数多次调用为好。<br/>
+							不过如果要使用qsort，记得按球技和颜值排序时是倒序，所以返回值是后者减去前者；而最后输出是字典序，那么直接返回strcmp的结果即可。<br/>
+							另外也有同学不会读入字符串，需要强调一下，下面这种方法适用于读入中间没有空白字符（空格、tab等）的字符串：
+						</p>
+						<pre>
+char buff[256];
+scanf("%s", buff);	//没有&amp;符号，因为数组记号本身就是一个指针！</pre>
+						<p>
+							而下面这种方法适用于读入中间有空白字符的字符串，缺点是每次都是读取一整行：<br/>
+						</p>
+						<pre>
+char buff[256];
+fgets(buff, 250, stdin);</pre>
+						<p>
+							由于本题的姓名字符串和球技、颜值整数在同一行内，推荐使用前者读入。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="forth"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>参考代码</h4>
+						<pre>
+#include&nbsp;&lt;stdio.h&gt;
+#include&nbsp;&lt;stdlib.h&gt;
+#include&nbsp;&lt;string.h&gt;
+
+typedef&nbsp;struct&nbsp;{
+	char&nbsp;name[16];	//球员姓名
+	int&nbsp;skill;	//球技
+	int&nbsp;appearance;	//颜值
+	int&nbsp;select1;	//是否skill排在前m个
+	int&nbsp;select2;	//是否appearance排在前k个
+}&nbsp;Player;
+
+Player&nbsp;players[256];
+
+//按球员球技排序的比较函数
+int&nbsp;cmp_skill(const&nbsp;void*&nbsp;p1,&nbsp;const&nbsp;void*&nbsp;p2)&nbsp;{
+	return&nbsp;((const&nbsp;Player*)p2)-&gt;skill&nbsp;-&nbsp;((const&nbsp;Player*)p1)-&gt;skill;
+}
+
+//按球员颜值排序的比较函数
+int&nbsp;cmp_appearance(const&nbsp;void*&nbsp;p1,&nbsp;const&nbsp;void*&nbsp;p2)&nbsp;{
+	return&nbsp;((const&nbsp;Player*)p2)-&gt;appearance&nbsp;-&nbsp;((const&nbsp;Player*)p1)-&gt;appearance;
+}
+
+//按球员姓名字母序排序的比较函数
+int&nbsp;cmp_name(const&nbsp;void*&nbsp;p1,&nbsp;const&nbsp;void*&nbsp;p2)&nbsp;{
+	return&nbsp;strcmp(((const&nbsp;Player*)p1)-&gt;name,&nbsp;((const&nbsp;Player*)p2)-&gt;name);
+}
+
+int&nbsp;main()&nbsp;{
+	int&nbsp;n,&nbsp;m,&nbsp;k;
+	scanf(&quot;%d%d%d&quot;,&nbsp;&amp;n,&nbsp;&amp;m,&nbsp;&amp;k);
+	for(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;n;&nbsp;++i)&nbsp;{
+		scanf(&quot;%s%d%d&quot;,&nbsp;players[i].name,&nbsp;&amp;players[i].skill,&nbsp;&amp;players[i].appearance);
+		players[i].select1&nbsp;=&nbsp;players[i].select2&nbsp;=&nbsp;0;
+	}
+	qsort(players,&nbsp;n,&nbsp;sizeof(Player),&nbsp;cmp_skill);
+	for(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;m;&nbsp;++i)&nbsp;{
+		players[i].select1&nbsp;=&nbsp;1;
+	}
+	qsort(players,&nbsp;n,&nbsp;sizeof(Player),&nbsp;cmp_appearance);
+	for(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;k;&nbsp;++i)&nbsp;{
+		players[i].select2&nbsp;=&nbsp;1;
+	}
+	qsort(players,&nbsp;n,&nbsp;sizeof(Player),&nbsp;cmp_name);
+	for(int&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;&lt;&nbsp;n;&nbsp;++i)&nbsp;{
+		if(players[i].select1&nbsp;&amp;&amp;&nbsp;players[i].select2)&nbsp;{
+			printf(&quot;%s\n&quot;,&nbsp;players[i].name);
+		}
+	}
+	
+	return&nbsp;0;
+}
+						</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="ab_e" id="ab_e">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+						<h2>总结</h2>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<p>
+							这次考试暴露出的问题较多，而C语言是就学习编程而言最应该掌握和打牢基础的。多多刷题有助于C语言编程能力的提升，所以要多刷题啊！<br/>
+							<img width="300px" src="/img/blogs/2023-1-15-3.png"/><br/>
+							推荐几个刷题的网站。最有名的便是<a href="https://leetcode.com/">LeetCode</a>，可以试着用C++去做，因为对于大一而言，下学期会学到数据结构，如果采用C++面向对象编程语言，在学习过程中会简单很多。<br/>
+							其次是<a href="https://www.luogu.com.cn/">洛谷</a>，里面有两套题库，分别是竞赛难度和针对语言学习者的题库，内容丰富全面。<br/>
+							另外则是我校几位计科软工的老学长开发和维护的<a href="https://acm.ecnu.edu.cn/">ECNUOJ</a>，题目多、注册简单，相信一定对大家的编程学习产生帮助。<br/>
+							最后提前祝大家新年快乐，新的一年里0 error(s), 0 warning(s)！<br/>
+							<img width="300px" src="/img/blogs/2023-1-15-5.png"/>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- footer -->
+	<footer id="section-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<div class="wow fadeIn" data-wow-delay="0.4s">
+						<div class="btn-circle-scroll">
+							<a href="#header-banner" class="btn-circle">
+								<i class="fa fa-angle-double-up animated"></i>
+							</a>
+						</div>
+					</div>
+					<p>Copyright &copy; 2022. Apache 2.0 License. <a target="_blank" href="https://github.com/Viola-Siemens/Viola-Siemens.github.io">网页源码</a></p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- /.footer -->
+	
+	<!-- Core JavaScript Files -->
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.easing.min.js"></script>
+	<script src="/js/jquery.scrollTo.js"></script>
+	<script src="/js/wow.min.js"></script>			<!-- Reveal animation when you scroll by wow.js. It need animate.css library -->
+	<!-- Custom Theme JavaScript -->
+	<script src="/js/custom.js"></script>
+</body>
+</html>

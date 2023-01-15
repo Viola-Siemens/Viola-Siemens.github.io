@@ -2,14 +2,16 @@ navs = [
     "http://localhost:8080/pages/emeraldcraft/blocks.html",
     "http://localhost:8080/pages/emeraldcraft/items.html",
     "http://localhost:8080/pages/emeraldcraft/entities.html",
-    "http://localhost:8080/pages/emeraldcraft/biomes.html"
+    "http://localhost:8080/pages/emeraldcraft/biomes.html",
+    "http://localhost:8080/pages/emeraldcraft/structures.html"
 ]
 
 paths = [
     "./emeraldcraft/blocks/",
     "./emeraldcraft/items/",
     "./emeraldcraft/entities/",
-    "./emeraldcraft/biomes/"
+    "./emeraldcraft/biomes/",
+    "./emeraldcraft/structures/"
 ]
 
 import requests
