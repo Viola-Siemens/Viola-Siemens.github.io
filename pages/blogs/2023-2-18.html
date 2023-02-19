@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>计算机拔尖基地假期自由练习题解</title>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+	<!-- Font Awesome -->
+	<link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+	<!-- Animation -->
+	<link href="/css/animate.css" rel="stylesheet" />
+	
+	<!-- MyTemplate CSS -->
+	<link href="/css/style-blog.css" rel="stylesheet">
+</head>
+
+<body style="">
+	<script type="text/javascript">
+		document.getElementsByTagName("body")[0].getAttributeNode("style").value = `background-image: url(/img/background/${Math.floor(Math.random() * 3) + 1}.jpg); background-attachment: fixed; background-size:100%`;
+	</script>
+	
+	<header id="header-banner">
+		<nav class="navbar navbar-default navbar-fixed-top fadeIn" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#dropdown-box-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand">
+						<a href="/index.html">私有链接</a>
+					</div>
+				</div>
+				
+				<!-- Collect the nav links and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-right" id="dropdown-box-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="/index.html">主页</a></li>
+						<li><a href="Mailto: 10185101162@stu.ecnu.edu.cn">联系我</a></li>
+					</ul>
+				</div>
+			</div> <!-- /.container -->
+		</nav> <!-- /.nav -->
+	</header>
+		
+	<!-- banner -->
+	<section class="banner" id="home">
+		<div class="container">
+			<div style="display:inline-block" class="slogan">
+				<h2>计算机拔尖基地假期自由练习题解</h2>
+				<h4>注意：本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 协议</a>。<br/>本文作者享有对本文内容的著作权，使用者不得进行商业使用，对本文的演绎著作需要以相同形式共享。</h4>
+			</div>
+			<div style="display:inline-block;float:right;background-color:rgba(255, 255, 255, 0.8)">
+				<div style="padding: 10px 10px 10px 10px;text-align:center"><img width="360px" src="/img/blogs/2023-2-18-1.png"/></div>
+			</div>
+			
+			<div class="btn-circle-scroll fadeIn">
+				<a href="#section-footer" class="btn-circle">
+					<i class="fa fa-angle-double-down animated"></i>
+				</a>
+			</div>
+		</div>
+	</section>
+	<!-- /.banner -->
+
+	<!-- abstract -->
+	<section class="ab_a" id="ab_a">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s"> 
+						<h2>前言</h2> 
+					</div>
+					<div class="col-sm-12">
+						<p>
+							<del><a href="/pages/blogs/2023-1-15.html"><b>前情提要</b></a></del><br/>
+							假期里接到学院通知，要我出六道题目，覆盖上学期C语言程序设计的所有知识点。<br/>
+							虽然六道题目很快就出完了，但后来感觉综合难度较高，而且难度梯度没有拉开，于是又补出了两道题目。<br/>
+							<img width="300px" src="/img/blogs/2023-2-18-2.jpg"/><br/>
+							另外除了拔尖班的同学们，我也看到了22级的几位数据学院本科生的作答——大家的答题情况都还不错，八道题我个人感觉整体难度适中，<del>同时也摒弃了文字描述越短的题目越难的这一文化糟粕。</del><br/>
+							废话不多说，接下来就是对这八道题的题解和参考代码的公布。
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /.abstract -->
+	
+	<!-- obtaining -->
+	<section class="ab_b" id="ab_b">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+						<h2>【A】兔年快乐</h2>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>题目描述</h4>
+						<p>
+							说到兔年，Viola最先想到了斐波那契数列。<br/>
+							斐波那契数列是满足f(n) = f(n - 1) + f(n - 2)且f(0) = f(1) = 1的数列，其前几项依次是1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...<br/>
+							此外斐波那契数列还有很多优秀的性质，如它是辗转相除法求最大公约数算法的最坏情况、相邻两项的比例接近黄金分割等等。<br/>
+							Viola想知道，区间[a, b)内有多少个斐波那契数。<br/>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>输入输出描述</h4>
+						<p>
+							输入第一行一个整数t。<br/>
+							接下来t行，每行两个整数a、b，表示一个区间。<br/>
+							对于40%的数据，t &le; 5，a &lt; b &le; 1000。<br/>
+							对于100%的数据，1 &le; t &le; 10，2 &le; a &lt; b &le; 1,000,000,000,000。<br/>
+							<br/>
+							输出t行，每行一个整数，代表区间[a, b)内有几个斐波那契数。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="third"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>思考</h4>
+						<p>
+							语言基础题，考察知识点主要是斐波那契数列的生成和计数。<br/>
+							斐波那契是咱们的老朋友了，我们知道二分递归法、线性递归法、记忆化搜索法、单重循环法，甚至是通项公式法等方式求解斐波那契第n项。<br/>
+							对于这道题目，a和b最大值达到了1e12，显然再使用二分递归是不合适了，肯定会超时。参考代码使用了单重循环法的变体，没有储存中间结果，进一步降低了内存占用。<br/>
+							另外附上上述几种方法的代码或思路。<br/>
+							<b>二分递归法：</b>
+						</p>
+						<pre>
+long long fib(int n) {
+	//O(2**n)
+	if(n &lt; 2) return 1LL;
+	return fib(n - 1) + fib(n - 2);
+}</pre>
+						<p>
+							<b>线性递归法：</b>
+						</p>
+						<pre>
+long long fib(int n, long long* pre) {
+	//O(n)
+	if(n == 0) {
+		*pre = 1LL;
+		return 0LL;
+	}
+	long long pre2;
+	*pre = fib(n - 1, &amp;pre2);
+	return pre2 + *pre;
+}</pre>
+						<p>
+							<b>记忆化搜索法：</b>
+						</p>
+						<pre>
+long long f[64] = {0};
+long long fib(int n) {
+	//O(n)
+	if(n &lt; 2) return 1LL;
+	if(f[n] > 0LL) return f[n];
+	return f[n] = fib(n - 1) + fib(n - 2);
+}</pre>
+						<p>
+							<b>单重循环法：</b>
+						</p>
+						<pre>
+long long f[64] = {0};
+void computeAllFib(int base) {
+	//O(n)
+	f[0] = f[1] = 1;
+	for(int i = 2; i &lt; base; ++i) {
+		f[i] = f[i - 1] + f[i - 2];
+	}
+}</pre>
+						<p>
+							<b>通项公式</b>，这里就放一张图了：<br/>
+							<img width="360px" src="/img/blogs/2023-2-18-3.png"/><br/>
+							<del>不妨试一下F(n-1)/F(n)在n→∞时的极限是多少？</del>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="forth"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>参考代码</h4>
+						<pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+	int t;
+	long long a, b;
+	scanf("%d", &amp;t);
+	while(t--) {
+		scanf("%lld%lld", &amp;a, &amp;b);
+		long long f1 = 1, f2 = 1, f3;
+		do {
+			f3 = f1 + f2;
+			f1 = f2;
+			f2 = f3;
+		} while(f3 &lt; a);
+		int cnt = 0;
+		while(f3 &lt; b) {
+			++cnt;
+			f3 = f1 + f2;
+			f1 = f2;
+			f2 = f3;
+		}
+		printf("%d\n", cnt);
+	}
+	return 0;
+}
+						</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /.obtaining -->
+	
+	<!-- usage -->
+	<section class="ab_c" id="ab_c">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+						<h2>【B】字母ABCBA</h2>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>题目描述</h4>
+						<p>
+							Viola最近对回文串非常执着。<br/>
+							对于一个字符串，如果从前往后读和从后往前读的字母排列是相同的，那么它就是一个回文串。如“ABCBA”、“noon”、“redivider”等。<br/>
+							Viola想知道，对于她读到的一篇文章（已经去除掉标点，大小写不敏感），有多少个单词是回文串。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>输入输出描述</h4>
+						<p>
+							输入一篇文章（仅包含空格、换行和字母A-Z、a-z），多行，每行包含了多个单词。<br/>
+							对于100%的数据，1 &le; 单词数 &le; 100，1 &le; 单词长度 &le; 100。<br/>
+							<br/>
+							输出一行一个整数，表示输入的文章中有多少个回文串单词（大小写不敏感）。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="third"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>思考</h4>
+						<p>
+							字符串为主的语言基础题，考察知识点主要是循环的编写。<br/>
+							<del>跟<a href="/pages/blogs/2023-1-15.html#ab_c">这道题</a>绝对没关系！</del><br/>
+							可以看到大家唯一拿捏不准的点大概是不知道输入何时结束。要知道，scanf、gets这类函数是有返回值的——scanf通常返回成功读入了几个变量，而gets通常返回和参数相同的指针以便管道化处理；而当scanf返回EOF（一般为-1，但更推荐与宏EOF进行比较）、gets返回NULL时，说明输入已经结束。<br/>
+							另外就是大小写不敏感，判断时需要统一转化为大写或小写或是字母序数，这里用ctype库的tolower函数统一转化为了小写字母。循环内容相信大家都会写，将第i位和第n-i-1位进行比较即可。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="forth"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>参考代码</h4>
+						<pre>
+#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;stdbool.h&gt;
+#include &lt;string.h&gt;
+
+bool isABCBA(char buff[]) {
+	int n = strlen(buff);
+	if(n &lt; 1) return false;
+	for(int i = 0; i &lt; n / 2; ++i) {
+		if(tolower(buff[i]) != tolower(buff[n - i - 1])) {
+			return false;
+		}
+	}
+	return true;
+}
+
+int main() {
+	char buff[256];
+	int cnt = 0;
+	while(EOF != scanf("%s", buff)) {
+		if(isABCBA(buff)) {
+			++cnt;
+		}
+	}
+	printf("%d\n", cnt);
+	
+	return 0; 
+}
+						</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /.usage -->
+	
+	<section class="ab_d" id="ab_d">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+						<h2>【C】K歌难题</h2>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>题目描述</h4>
+						<p>
+							Viola有n-1个闺蜜，有一天她们n人去KTV唱歌。<br/>
+							她们点了m首歌，每首歌都必须要k个人一起唱。<br/>
+							Viola想知道，如果她们自由分配每首歌由哪k个人一起唱，那么m首歌唱下来，一共有多少种组合情况。<br/>
+							显然这个数很大，你只需要输出情况数对p取模的结果即可。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>输入输出描述</h4>
+						<p>
+							输入共两行，第一行三个整数n, m, k，代表人数、曲目数和每首歌合唱的人数。<br/>
+							第二行一个整数p，代表最终结果要对p取模。<br/>
+							对于40%的数据，n, m, k &le; 10, p &le; 100000。<br/>
+							对于100%的数据，1 &le; k &lt; n &le; 100，1 &le; m &le; 100，2 &le; p &le; 100,000,000。<br/>
+							<br/>
+							输出一行一个整数，表示情况数对p取模后的结果。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="third"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>思考</h4>
+						<p>
+							函数题，考察知识点主要是杨辉三角变体和求幂的编写。<br/>
+							很明显，这道题就是求解C(n, k)的m次方对p取模的结果。其中C(n, k)表示组合数，即n个不同的物品中选择k个的情况数。<br/>
+							但我们无法在求解这一结果完成之后再去取模，因为C(100, 50)早已超过 long long 的范围<del>（毕竟这百人闺蜜团太过强大了）</del>。所以必须要一边求值一边取模，以防止溢出。<br/>
+							<del>如果你用python做的那就当我没说。</del><br/>
+							那么如何求 C(n, k)%p 呢？显然如果使用 n!/((n-k)!k!) 这种做法，我们需要找到 (n-k)!k! 在模p意义下的逆元，显然超纲了。所以我们不得不采取另一种做法，就是杨辉三角。<br/>
+							由于k &lt; n时， C(n, k) % p = (C(n-1, k-1) + C(n-1, k)) % p = C(n-1, k-1) % p + C(n-1, k) % p ，所以我们可以用一个递归函数来实现求解组合数，但<a href="/pages/blogs/2023-2-18.html#ab_b">A题</a>已经告诉我们要<b>避免在有重复结果可以利用时使用二分递归</b>，所以参考答案使用了记忆化搜索。<br/>
+							那么如何求x的m次方模p呢？我们同样是要一边取模一边计算，因为 x**m % p = ((x**(m-1) % p) * (x % p)) % p ，因而我们也可以使用递归或循环的方法来求这一过程——毕竟我们已经求出了 x % p 的值。<br/>
+							参考代码使用了快速幂，可以在O(log m)的时间复杂度下求x**m % p，原理举例： x**11 % p = ((x**8 % p) * (x**2 % p) * (x**1 % p)) % p 。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="forth"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>参考代码</h4>
+						<pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+long long c[128][128];
+
+long long C(int n, int k, long long p) {
+	if(k == 0 || n == k) return 1;
+	if(c[n][k] &gt; 0) return c[n][k];
+	return c[n][k] = (C(n - 1, k - 1, p) + C(n - 1, k, p)) % p;
+}
+
+long long powmod(long long x, int ind, long long p) {
+	long long shadow = x;
+	long long ans = 1;
+	for(int i = 1; i &lt;= ind; i &lt;&lt;= 1) {
+		if(ind &amp; i) {
+			ans = (ans * shadow) % p;
+		}
+		shadow = (shadow * shadow) % p;
+	}
+	return ans;
+}
+
+int main() {
+	memset(c, -1, sizeof(c));
+	int n, m, k;
+	long long p;
+	scanf("%d%d%d%lld", &amp;n, &amp;m, &amp;k, &amp;p);
+	printf("%lld\n", powmod(C(n, k, p), m, p));
+	
+	return 0;
+}
+						</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="ab_e" id="ab_e">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+						<h2>【D】走迷宫</h2>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>题目描述</h4>
+						<p>
+							据说，三馆和理科大楼的后面有一个迷宫。<br/>
+							有一天，Viola误入了迷宫世界，而她只有一个地图。在迷宫内的每次移动，都只能向左、右、前、后方移动一格，不能斜向移动，不能穿越墙壁。<br/>
+							Viola想知道，她的位置距离最近的出口有多远。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>输入输出描述</h4>
+						<p>
+							输入第一行两个整数n, m。<br/>
+							接下来n行，每行m个字符，表示地图的内容。<br/>
+							地图的每一个字符由'.'、'#'、'V'、'E'四种字符表示。'.'是空地，可以正常通过；'#'是墙壁，不能穿越过去；'V'是Viola所在的位置，输入保证地图内容只有一个'V'；'E'是出口，迷宫可能不止一个出口。<br/>
+							输入保证Viola所在的位置一定有一条路径通往出口。<br/>
+							对于100%的数据，5 &le; n, m &le; 50。<br/>
+							<br/>
+							输出一行一个整数，表示Viola与最近的出口相距多远。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="third"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>思考</h4>
+						<p>
+							搜索题，考察知识点主要是dfs或bfs的编写。<br/>
+							<del>出这道题是因为我大一真的在三馆后面的胡同里迷路过。所以大家在跑健步走打卡的时候一定要注意安全。</del><br/>
+							此题并没有特别的难点，首先是迷宫的读取，其实直接scanf("%s", map[i])或者gets(map[i])即可。看到有的同学在外侧补了一圈'#'，这也是一个很好的想法，在下一步搜索时的判断条件里就可以不用进行越界判断了。<br/>
+							接下来是搜索的状态转移，如果使用了dfs，为了防止超时，需要进行优化剪枝：维护一个“当前最短路径”，如果搜索深度早已超过这个路径，那么必不可能比当前解更优，便可以终止这一枝的搜索已节省时间。<br/>
+							不过也可以使用bfs，但bfs需要用队列维护搜索中的坐标，而实现队列数据结构又超纲了。因此这里提供一个可行的无队列bfs——将搜索过的点标记为'*'，将继续搜索的点标记为'V'，每次遍历全图然后对所有的'V'四周的'.'进行状态转移，将其距离改成'V'处+1，然后标记为'V'，最后将原来的'V'标记为'*'以防止无限转移。<br/>
+							这种做法就有点像是：<br/>
+							<img width="320px" src="/img/blogs/2023-2-18-4.gif"/>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="forth"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>参考代码</h4>
+						<pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+char map[128][128];
+char tmpmap[128][128];
+int dist[128][128];
+
+int moves[4][2] = {
+	{1, 0}, {-1, 0}, {0, 1}, {0, -1}
+};
+
+int bfs(int n, int m) {
+	int cnt = 0;
+	memcpy(tmpmap, map, sizeof(map));
+	for(;;) {
+		++cnt;
+		for(int i = 0; i &lt; n; ++i) {
+			for(int j = 0; j &lt; m; ++j) {
+				if(map[i][j] == 'V') {
+					for(int k = 0; k &lt; 4; ++k) {
+						int di = i + moves[k][0];
+						int dj = j + moves[k][1];
+						if(di &gt;= 0 &amp;&amp; dj &gt;= 0 &amp;&amp; di &lt; n &amp;&amp; dj &lt; m) {
+							if(map[di][dj] == 'E') {
+								return cnt;
+							}
+							if(map[di][dj] == '.') {
+								tmpmap[di][dj] = 'V';
+							}
+						}
+					}
+					tmpmap[i][j] = 'Z';
+				}
+			}
+		}
+		memcpy(map, tmpmap, sizeof(tmpmap));
+	}
+}
+
+int main() {
+	int n, m;
+	scanf("%d%d", &amp;n, &amp;m);
+	memset(dist, 0, sizeof(dist));
+	for(int i = 0; i &lt; n; ++i) {
+		scanf("%s", map[i]);
+	}
+	printf("%d\n", bfs(n, m));
+	
+	return 0;
+}
+						</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="ab_f" id="ab_f">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+						<h2>【E】核酸点</h2>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>题目描述</h4>
+						<p>
+							自疫情防控政策放开以来，核酸点在逐步减少。<br/>
+							Viola收集到了一条笔直街道的所有核酸点的坐标，她想知道，相邻两个核酸点的最近和最远距离分别是多少。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>输入输出描述</h4>
+						<p>
+							输入第一行一个整数n，代表核酸点的数量。<br/>
+							接下来一行n个整数a_i，代表核酸点在道路上的坐标。<br/>
+							对于20%的数据，n &le; 10, a_i &le; 100。<br/>
+							对于100%的数据，3 &le; n &le; 100,000，0 &le; a_i &le; 10,000,000。<br/>
+							<br/>
+							输出一行两个整数，分别表示相邻两个核酸点的最近和最远距离。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="third"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>思考</h4>
+						<p>
+							排序题，考察排序和循环的使用。<br/>
+							这个题难度不大，只要能想到对整个序列进行一次排序之后，取相邻元素之差的最大和最小值，这道题就迎刃而解了。<br/>
+							上次已经说过不要重复造轮子了，这次又看到有人手写了排序，结果提交之后都超时了。没错，这次的数据有坑，没有优化过的排序都会超时，所以先来聊一聊排序算法的细节。<br/>
+							首先冒泡、选择、插入等O(n²)级别复杂度的算法肯定是不行的，因为n最大有1e5，会超时的；归并排序、堆排序、希尔排序这些复杂度小一级的排序算法肯定没问题，关键就出在快速排序上。<br/>
+							快速排序我们都知道是一个经典的二分递归，而二分递归分为三个部分：处理-调用-回溯。快速排序则无需回溯过程，分为两部分——构造与培养轴点、分别排序轴点两侧的数组内容，递归基是数组长度小于2，因为单元素和空数组必然有序。然而快速排序有三个优化，分别是节点交换优化（常数优化）、随机化轴点优化（保证对有序数组的排序依然分摊nlogn）、勤于交换懒于收缩优化（保证对每个元素数值都完全相等的数组排序依然分摊nlogn）。而手写快排的部分同学并没有实现这些优化，因而算法超时。<br/>
+							感兴趣的同学我可以发给他我实现上述三种优化的快排模板，但这是数据结构课程的内容，此题参考代码还是使用了qsort。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="forth"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>参考代码</h4>
+						<pre>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int cmp(const void* pa, const void* pb) {
+	return *((const int*)pa) - *((const int*)pb);
+}
+
+int main() {
+	int n;
+	int a[102400];
+	scanf("%d", &amp;n);
+	for(int i = 0; i &lt; n; ++i) {
+		scanf("%d", a + i);
+	}
+	qsort(a, n, sizeof(int), cmp);
+	
+	int min = 0x3f3f3f3f, max = 0;
+	for(int i = 1; i &lt; n; ++i) {
+		int d = a[i] - a[i - 1];
+		if(d &lt; min) {
+			min = d;
+		}
+		if(d &gt; max) {
+			max = d;
+		}
+	}
+	printf("%d %d\n", min, max);
+	
+	return 0;
+}
+						</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="ab_g" id="ab_g">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+						<h2>【F】k进制实数</h2>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>题目描述</h4>
+						<p>
+							Viola发现，在某些进制下的有限小数，在其它进制下可能是无限循环小数。<br/>
+							举个例子，十进制下的0.2，在二进制下是0.001100110011...，循环节是"0011"。而三进制下的0.2，在十进制下却是0.66666666...。这也是计算机在处理某些小数时会产生的浮点误差的原因之一。<br/>
+							Viola想知道，k进制下的实数a，在十进制下如何表示。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>输入输出描述</h4>
+						<p>
+							输入第一行一个字符串a，表示k进制下的实数a。输入保证有且仅有一个小数点，其它字符全是数字或小写字母（0-9，a-u）。<br/>
+							第二行一个数字k。<br/>
+							对于100%的数据，3 &le; strlen(a) &le; 100，0 &le; 结果 &le; 10000，2 &le; k &le; 32。<br/>
+							<br/>
+							输出一行一个实数，表示转换成十进制后的表示。结果请四舍五入保留四位小数。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="third"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>思考</h4>
+						<p>
+							字符串和循环递归的综合题，考察进制转换的编写。<br/>
+							由于保留四位小数，且结果在1e4数量级，那么尽量避免用一个float存结果，因为会产生误差。可以使用double，也可以分别输出整数部分和小数部分并用'.'连接（printf("%d.%.4f\n", a, b)）。<br/>
+							参考代码只遍历了一遍字符串，整数部分用秦九韶算法求解，小数部分则一边除来记录当前位代表的数，一边相加。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="forth"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>参考代码</h4>
+						<pre>
+#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int repo(char c) {
+	if(isdigit(c)) {
+		return c - '0';
+	}
+	return c - 'a' + 10;
+}
+
+double convert(char buff[], int k) {
+	double ans = 0;
+	int i;
+	for(i = 0; buff[i] != '.'; ++i) {
+		ans = ans * k + repo(buff[i]);
+	}
+	++i;
+	double b = 1.0;
+	for(; buff[i]; ++i) {
+		b /= k;
+		ans += repo(buff[i]) * b;
+	}
+	
+	return ans;
+}
+
+int main() {
+	char buff[128];
+	int k;
+	scanf("%s%d", buff, &amp;k);
+	printf("%.4lf\n", convert(buff, k));
+	
+	return 0;
+}
+						</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="ab_h" id="ab_h">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+						<h2>【G】计算里程</h2>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>题目描述</h4>
+						<p>
+							Viola要去遥远的地方旅行。<br/>
+							她乘坐的飞机要先向北飞行x公里，在中转机场降落，然后旋转a度后飞行y公里，降落到目的地机场。她想知道，自己的出发地离目的地的直线距离是多远。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>输入输出描述</h4>
+						<p>
+							输入一行三个实数x, a, y。表示第一次飞行的距离、旋转的角度（单位：度）和继续飞行的距离。<br/>
+							对于100%的数据，0 &lt; x, y &le; 5000，0 &le; a &le; 180。<br/>
+							<br/>
+							输出一行一个实数，四舍五入保留四位小数，表示出发地和目的地的直线距离。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="third"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>思考</h4>
+						<p>
+							水题，考察基本代码能力。<br/>
+							这道题目没有任何难点，如果有疑问，应该是对math库的函数熟悉程度不够。sqrt是求算术平方根，sin、cos、tan等分别是求对应三角函数，而asin、acos、atan则是对应的三角反函数。<br/>
+							直接用余弦定理就可以解决，大家刚刚高考完应该没忘记吧<del>（反正我是早忘了）</del>。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="forth"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>参考代码</h4>
+						<pre>
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main() {
+	const double PI = acos(-1.0);
+	double x, a, y;
+	scanf("%lf%lf%lf", &amp;x, &amp;a, &amp;y);
+	printf("%.4lf\n", sqrt(x*x + y*y - 2*x*y*cos((180.0 - a)*PI/180.0)));
+	
+	return 0;
+}
+						</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="ab_i" id="ab_i">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+						<h2>【H】消除游戏</h2>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>题目描述</h4>
+						<p>
+							Viola在玩一个消除游戏。<br/>
+							这个消除游戏的规则如下：<br/>
+							消除目标是一个3×3黑白点阵图。玩家每次可以点击9个按钮中的任何一处按钮，它本身连同其上、下、左、右都会变成另一个颜色。<br/>
+							如果按钮在边界上，溢出点阵图的部分将忽略掉不作考虑，而不是左右或上下循环。<br/>
+							Viola希望将图片的所有黑色点全部消除为白色点，于是请教你，希望你能帮她解决。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="second"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>输入输出描述</h4>
+						<p>
+							输入三行，每行三个整数。九个整数一定是0或1。其中1表示黑色点，0表示白色点。<br/>
+							<br/>
+							输出三行，每行三个整数。九个整数一定是0或1。1表示需要点击的按钮，0表示不需要点击的按钮。<br/>
+							按你输出的结果点击按钮后，输入的点阵图将会消除成全白色点。
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="third"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>思考</h4>
+						<p>
+							<del>打表题</del>，本意是考察递归和位运算来着。<br/>
+							这道题的解法最多了，因为一共就512种情况。<br/>
+							标准思路是使用递归回溯的方法，在9个位上去试0/1，直到可以消除输入图像。根据题目给出的定理，只要代码正确，必然有一个解（参考代码1）。<br/>
+							不过题目还给出了交换律和幂等律的结论，因而我们可以尝试逐一消除图像中的每一个1——我们把将一个位置的黑白颠倒而不改变其它位置黑白的操作叫做原子操作，那么将每一个1位置黑白颠倒的原子操作异或起来就是最终的解（参考代码2）。<br/>
+							另外就是打表，利用了幂等律和一一映射的性质，即我们可以写一个程序，输出从全白图像按下不同按钮组合后变成的0/1图像，然后建立反向映射。这样根据每一张输入图片，通过查表就能得到输出的按钮组合（参考代码3）。<br/>
+							<del>谁写了九重循环啊，下次我可要出5×5的题了！</del>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="forth"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<h4>参考代码1</h4>
+						<pre>
+#include &lt;stdio.h&gt;
+#include &lt;stdbool.h&gt;
+#include &lt;assert.h&gt;
+
+#define N 3
+
+int ans[N][N];
+int res[N][N];
+int input[N][N];
+
+const int moves[4][2] = {
+	{1, 0}, {-1, 0}, {0, 1}, {0, -1}
+};
+
+void calc() {
+	for(int i = 0; i &lt; N; ++i) {
+		for(int j = 0; j &lt; N; ++j) {
+			res[i][j] = input[i][j] ^ ans[i][j];
+			for(int k = 0; k &lt; 4; ++k) {
+				int di = i + moves[k][0];
+				int dj = j + moves[k][1];
+				if(di &gt;= 0 && di &lt; N && dj &gt;= 0 && dj &lt; N) {
+					res[i][j] ^= ans[di][dj];
+				}
+			}
+		}
+	}
+}
+
+bool dfs(int depth) {
+	if(depth == N * N) {
+		calc();
+		for(int i = 0; i &lt; N; ++i) {
+			for(int j = 0; j &lt; N; ++j) {
+				if(res[i][j] != 0) {
+					return false; 
+				}
+			}
+		}
+		return true;
+	}
+	int i = depth / N;
+	int j = depth % N;
+	ans[i][j] = 0;
+	if(dfs(depth + 1)) return true;
+	ans[i][j] = 1;
+	return dfs(depth + 1);
+}
+
+int main() {
+	for(int i = 0; i &lt; N; ++i) {
+		for(int j = 0; j &lt; N; ++j) {
+			scanf("%d", input[i] + j);
+		}
+	}
+	assert(dfs(0));
+	for(int i = 0; i &lt; N; ++i) {
+		printf("%d", ans[i][0]); 
+		for(int j = 1; j &lt; N; ++j) {
+			printf(" %d", ans[i][j]); 
+		}
+		putchar('\n');
+	}
+	
+	return 0;
+}
+						</pre>
+					</div>
+					<div class="col-sm-12">
+						<h4>参考代码2</h4>
+						<pre>
+#include &lt;stdio.h&gt;
+#include &lt;stdbool.h&gt;
+#include &lt;assert.h&gt;
+
+#define N 3
+
+int atoms[] = {
+	0xe5,	//0b011100101
+	0x1d0,	//0b111010000
+	0x18d,	//0b110001101
+	0x134,	//0b100110100
+	0xba,	//0b010111010
+	0x59,	//0b001011001
+	0x163,	//0b101100011
+	0x17,	//0b000010111
+	0x14e	//0b101001110
+};
+
+int main() {
+	int x;
+	int ans = 0;
+	for(int i = 0; i &lt; N; ++i) {
+		for(int j = 0; j &lt; N; ++j) {
+			scanf("%d", &amp;x);
+			if(x) {
+				ans ^= atoms[i * N + j];
+			}
+		}
+	}
+	for(int i = 0; i &lt; N; ++i) {
+		printf("%d", ans &amp; 1); 
+		ans &gt;&gt;= 1;
+		for(int j = 1; j &lt; N; ++j) {
+			printf(" %d", ans &amp; 1); 
+			ans &gt;&gt;= 1;
+		}
+		putchar('\n');
+	}
+	
+	return 0;
+}
+						</pre>
+					</div>
+					<div class="col-sm-12">
+						<h4><del>打表的</del>参考代码3</h4>
+						<pre>
+#include &lt;stdio.h&gt;
+#include &lt;stdbool.h&gt;
+#include &lt;assert.h&gt;
+
+#define N 3
+
+int table[] = {
+	0, 229, 464, 309, 397, 360, 93, 184, 308, 465, 228, 1, 185, 92, 361, 396,
+	186, 95, 362, 399, 311, 466, 231, 2, 398, 363, 94, 187, 3, 230, 467, 310,
+	89, 188, 393, 364, 468, 305, 4, 225, 365, 392, 189, 88, 224, 5, 304, 469,
+	227, 6, 307, 470, 366, 395, 190, 91, 471, 306, 7, 226, 90, 191, 394, 367,
+	355, 390, 179, 86, 238, 11, 318, 475, 87, 178, 391, 354, 474, 319, 10, 239,
+	473, 316, 9, 236, 84, 177, 388, 353, 237, 8, 317, 472, 352, 389, 176, 85,
+	314, 479, 234, 15, 183, 82, 359, 386, 14, 235, 478, 315, 387, 358, 83, 182,
+	384, 357, 80, 181, 13, 232, 477, 312, 180, 81, 356, 385, 313, 476, 233, 12,
+	23, 242, 455, 290, 410, 383, 74, 175, 291, 454, 243, 22, 174, 75, 382, 411,
+	173, 72, 381, 408, 288, 453, 240, 21, 409, 380, 73, 172, 20, 241, 452, 289,
+	78, 171, 414, 379, 451, 294, 19, 246, 378, 415, 170, 79, 247, 18, 295, 450,
+	244, 17, 292, 449, 377, 412, 169, 76, 448, 293, 16, 245, 77, 168, 413, 376,
+	372, 401, 164, 65, 249, 28, 297, 460, 64, 165, 400, 373, 461, 296, 29, 248,
+	462, 299, 30, 251, 67, 166, 403, 374, 250, 31, 298, 463, 375, 402, 167, 66,
+	301, 456, 253, 24, 160, 69, 368, 405, 25, 252, 457, 300, 404, 369, 68, 161,
+	407, 370, 71, 162, 26, 255, 458, 303, 163, 70, 371, 406, 302, 459, 254, 27,
+	334, 427, 158, 123, 195, 38, 275, 502, 122, 159, 426, 335, 503, 274, 39, 194,
+	500, 273, 36, 193, 121, 156, 425, 332, 192, 37, 272, 501, 333, 424, 157, 120,
+	279, 498, 199, 34, 154, 127, 330, 431, 35, 198, 499, 278, 430, 331, 126, 155,
+	429, 328, 125, 152, 32, 197, 496, 277, 153, 124, 329, 428, 276, 497, 196, 33,
+	45, 200, 509, 280, 416, 325, 112, 149, 281, 508, 201, 44, 148, 113, 324, 417,
+	151, 114, 327, 418, 282, 511, 202, 47, 419, 326, 115, 150, 46, 203, 510, 283,
+	116, 145, 420, 321, 505, 284, 41, 204, 320, 421, 144, 117, 205, 40, 285, 504,
+	206, 43, 286, 507, 323, 422, 147, 118, 506, 287, 42, 207, 119, 146, 423, 322,
+	345, 444, 137, 108, 212, 49, 260, 481, 109, 136, 445, 344, 480, 261, 48, 213,
+	483, 262, 51, 214, 110, 139, 446, 347, 215, 50, 263, 482, 346, 447, 138, 111,
+	256, 485, 208, 53, 141, 104, 349, 440, 52, 209, 484, 257, 441, 348, 105, 140,
+	442, 351, 106, 143, 55, 210, 487, 258, 142, 107, 350, 443, 259, 486, 211, 54,
+	58, 223, 490, 271, 439, 338, 103, 130, 270, 491, 222, 59, 131, 102, 339, 438,
+	128, 101, 336, 437, 269, 488, 221, 56, 436, 337, 100, 129, 57, 220, 489, 268,
+	99, 134, 435, 342, 494, 267, 62, 219, 343, 434, 135, 98, 218, 63, 266, 495,
+	217, 60, 265, 492, 340, 433, 132, 97, 493, 264, 61, 216, 96, 133, 432, 341
+};
+
+int main() {
+	int x;
+	int tmp = 0;
+	int b = 1;
+	for(int i = 0; i &lt; N; ++i) {
+		for(int j = 0; j &lt; N; ++j) {
+			scanf("%d", &amp;x);
+			tmp += x * b;
+			b &lt;&lt;= 1;
+		}
+	}
+	int ans = table[tmp];
+	for(int i = 0; i &lt; N; ++i) {
+		printf("%d", ans &amp; 1); 
+		ans &gt;&gt;= 1;
+		for(int j = 1; j &lt; N; ++j) {
+			printf(" %d", ans &amp; 1); 
+			ans &gt;&gt;= 1;
+		}
+		putchar('\n');
+	}
+	
+	return 0;
+}
+						</pre>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="ab_j" id="ab_j">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="wow bounceInLeft" data-wow-delay="0.1s">
+						<h2>总结</h2>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row-padded" id="first"></div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="col-sm-12">
+						<p>
+							总体来讲大家的提交还不错，大家可以根据这次练习来查缺补漏。<br/>
+							祝大家新学期学业有成！<br/>
+							<img width="300px" src="/img/blogs/2023-2-18-5.png"/>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- footer -->
+	<footer id="section-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-lg-12">
+					<div class="wow fadeIn" data-wow-delay="0.4s">
+						<div class="btn-circle-scroll">
+							<a href="#header-banner" class="btn-circle">
+								<i class="fa fa-angle-double-up animated"></i>
+							</a>
+						</div>
+					</div>
+					<p>Copyright &copy; 2022. Apache 2.0 License. <a target="_blank" href="https://github.com/Viola-Siemens/Viola-Siemens.github.io">网页源码</a></p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- /.footer -->
+	
+	<!-- Core JavaScript Files -->
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.easing.min.js"></script>
+	<script src="/js/jquery.scrollTo.js"></script>
+	<script src="/js/wow.min.js"></script>			<!-- Reveal animation when you scroll by wow.js. It need animate.css library -->
+	<!-- Custom Theme JavaScript -->
+	<script src="/js/custom.js"></script>
+</body>
+</html>
