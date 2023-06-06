@@ -1,0 +1,585 @@
+/*
+Author ICYLUNA
+Date 2021.01
+Only My Railgun.
+*/
+
+body {
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","å¾®è½¯é›…é»‘",Arial,sans-serif;
+}
+
+a:hover, a:active, a:focus {
+    text-decoration: none;
+}
+
+rt {
+    font-size: 0.8em;
+}
+
+.card {
+    display: block;
+}
+
+::selection {
+    background: #ffeaa7
+}
+
+.navbar {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.navbar-brand {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 50%;
+}
+
+.navbar-brand img {
+    height: 45px;
+}
+
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-left: .8rem;
+    padding-right: .8rem;
+    transition: .2s;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.nav-join {
+    margin-left: 10px;
+}
+
+.nav-join:hover, .nav-join:active {
+    background-color: #fdd835;
+    border-color: #fdd835;
+}
+
+
+.fp-tips {
+    text-align: center;
+    font-weight: 300;
+    font-size: 1rem;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.fp-tips img {
+    height: 20px;
+}
+#message ul li{
+    list-style: none;
+}
+#message4 li{
+    text-align: center;
+}
+#first {
+    background: url("images/start/网页图.jpg") no-repeat right ;
+    background-size: 50%;
+}
+
+.fp-body {
+    max-width: 1500px;
+    margin: auto;
+}
+
+.fp-first-t1 {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #666;
+    line-height: 1.2;
+}
+
+.fp-first-t2 {
+    margin-top: 0.5rem;
+    font-size: 2rem;
+    color: #888;
+}
+
+
+#about {
+    background-image: url(https://cdn.saimoe.co/mikoto/index/work-overlay.svg), linear-gradient(
+            120deg
+            , #a1c4fd 0%, #c2e9fb 100%);
+    background-size: cover, auto;
+    background-repeat: no-repeat, repeat;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    color: #fff;
+    font-weight: 300;
+}
+
+.fp-about-part {
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    background-color: rgba(4, 10, 32, 0.8);
+}
+
+.fp-about-info {
+    height: 100%;
+
+}
+
+.fp-about-info img {
+    width: 100%;
+}
+
+.fp-about-t1 {
+    margin-top: 20px;
+    font-size: 1.8rem;
+}
+
+.fp-about-t2 {
+    font-size: 1.5rem;
+}
+
+.fp-about-intro {
+    line-height: 2;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.fp-about-intro li {
+    list-style: inside
+}
+
+
+.btn-about {
+    border: 1px solid #fff;
+    padding: 10px 0;
+    text-align: center;
+    display: block;
+    font-size: 1rem;
+    text-decoration: none;
+    color: #fff;
+    -webkit-transition: .2s ease-in-out;
+    transition: .2s ease-in-out;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.btn-about:hover {
+    background-color: #fff;
+    color: rgba(4, 10, 32, 0.8);
+}
+
+#project {
+    background-color: #e6ecf0;
+}
+
+#project .card {
+    transition: all 0.2s ease;
+    border: none !important;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#project .card:hover {
+    transform: scale(1.05);
+}
+
+.fp-project-title {
+    text-align: center;
+    font-weight: 300;
+    font-size: 2em;
+    color: #444;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding-bottom: 20px;
+}
+
+.project-title {
+    color: #444;
+    font-size: 1.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.project-text {
+    color: #999;
+    font-size: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fp-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 3em;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding-bottom: 50px;
+}
+
+
+.fp-work-icon {
+    padding: 30px;
+}
+
+
+.fp-social-block {
+    display: block;
+    transition: .3s
+}
+
+.fp-social-block:hover {
+    opacity: .6;
+}
+
+.fp-social-block img {
+    width: 100%;
+}
+
+.fp-social-block .card {
+    margin-top: 10px;
+}
+
+.fp-social-block .card p {
+    text-align: center;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    color: #666;
+    font-weight: 300;
+}
+
+.fp-social-text {
+    padding-top: 30px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #666;
+}
+
+#join {
+    background-image: url(https://cdn.saimoe.co/mikoto/index/work-overlay.svg), linear-gradient(
+            90deg
+            , #544848 0%, #736464 100%);
+    background-size: cover, auto;
+    background-repeat: no-repeat, repeat;
+}
+
+.fp-join {
+    max-width: 600px;
+    text-align: center;
+}
+
+.qun-ava img {
+    width: 100%;
+}
+
+.qun-ava {
+    border-radius: 100%;
+    border: 8px solid transparent;
+    overflow: hidden;
+}
+
+.qun-ava-border {
+    border-radius: 100%;
+    border: 2px solid #fff;
+}
+
+.qun-qrcode {
+    padding: 15px;
+}
+
+.qun-qrcode img {
+    width: 100%;
+}
+
+
+.join-text {
+    padding-top: 30px;
+    padding-bottom: 50px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);;
+    color: #fff;
+}
+
+.join-text h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#last {
+    background: url("https://cdn.saimoe.co/mikoto/index/last-bg.jpg");
+    background-size: auto 100%;
+    -webkit-animation: bgScroll 100s linear infinite;
+    animation: bgScroll 100s linear infinite;
+}
+
+@-webkit-keyframes bgScroll {
+    0% {
+        background-position: left top
+    }
+    100% {
+        background-position: -200% top
+    }
+}
+
+@keyframes bgScroll {
+    0% {
+        background-position: left top
+    }
+    100% {
+        background-position: -200% top
+    }
+}
+
+.fp-last-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(120deg, rgba(246, 211, 101, 0.9) 0%, rgba(253, 160, 133, 0.9) 100%);
+}
+
+.fp-last-text {
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 999;
+}
+
+.fp-last-text h1 {
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+.fp-last-text h2 {
+    font-size: 3rem;
+    opacity: .9;
+}
+
+.br {
+    display: none;
+}
+
+
+@media (max-width: 1500px) {
+    #first {
+        background-position: 500% center;
+    }
+
+    .fp-body {
+        padding-left: 50px;
+    }
+}
+
+@media (max-width: 1200px) {
+    html {
+        font-size: 12px;
+    }
+
+    #fp-nav {
+        display: none;
+    }
+
+    .navbar-brand img {
+        height: 35px;
+    }
+
+    .navbar-collapse {
+        text-align: center;
+    }
+
+    .nav-join {
+        margin: 0;
+    }
+
+    .nav-item {
+        margin: 5px 0;
+        padding: 5px 0;
+    }
+
+    #first {
+        background-position: center;
+        background-size: cover;
+    }
+
+    .fp-body {
+        margin: 1rem;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, .8)
+    }
+
+    .fp-first-t1 {
+        font-size: 2.5rem;
+    }
+
+    .fp-first-t2 {
+        padding: 0;
+        margin-top: 0.2rem;
+        font-size: 1.5rem;
+    }
+
+    .fp-first-tips {
+        text-shadow: 0 0 10px #fff;
+    }
+
+    #about {
+        background-position: right;
+    }
+
+    #about .container {
+        padding-top: 50px;
+        max-width: 300px;
+    }
+
+    .fp-about-t1 {
+        margin-top: 10px;
+    }
+
+    .fp-about-t2 {
+        margin-bottom: 5px;
+    }
+
+    .btn-about {
+        margin-bottom: 0;
+    }
+
+    .clo-6-1{
+        position: relative;
+        width: 100%;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .clo-md-4-1{
+        -ms-flex: 0 0 33.333333%;
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+        position: relative;
+        width: 100%;
+    }
+
+    .fp-about-info {
+        height: auto;
+        border-bottom: 5px solid #fff;
+    }
+
+    #project .card {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    #project .card:hover {
+        transform: scale(1);
+    }
+
+    .fp-project-title {
+        font-size: 1.5em;
+        padding-bottom: 10px;
+    }
+
+    .project-title {
+        font-size: 1.2rem;
+    }
+
+    .project-text {
+        font-size: 0.8rem;
+    }
+
+    #project .container {
+        padding: 0 30px;
+    }
+
+    #project .col-6 {
+        padding: 0 5px;
+    }
+
+    #social .col-6 {
+        padding: 0 5px;
+    }
+
+    .fp-social-block .card-body {
+        padding: 0.5rem;
+    }
+
+    .fp-social-block .card p {
+        font-size: 0.8rem;
+    }
+
+    .fp-social-text {
+        font-size: 1.2rem;
+    }
+
+    .qun-ava-block {
+        max-width: 150px;
+        margin: auto;
+    }
+
+    .join-text {
+        padding-bottom: 30px;
+    }
+
+    .join-text h1 {
+        font-size: 1.5rem;
+    }
+
+    #last {
+        background-size: auto 50%;
+        -webkit-animation: bgScroll 10s linear infinite;
+        animation: bgScroll 10s linear infinite;
+    }
+
+    .br {
+        display: inline;
+    }
+
+    .fp-last-text h1 {
+        font-size: 4rem;
+    }
+
+    .fp-last-text h2 {
+        font-size: 1.5rem;
+    }
+
+    #work {
+        background-size: cover, auto;
+    }
+
+    #work .container {
+        padding: 0 50px;
+    }
+
+    #work .col-6 {
+        margin-bottom: 1rem;
+        padding-left: .5rem;
+        padding-right: .5rem;
+    }
+
+    #work .card-body {
+        padding: 5px;
+    }
+
+    #work .card-body p {
+        font-size: 1.2rem;
+        padding-bottom: 10px;
+    }
+
+    .fp-work-icon {
+        padding: 20px;
+    }
+
+    .fp-title {
+        font-size: 2.2rem;
+        padding-top: 50px;
+        padding-bottom: 20px;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+@media (min-width: 2000px) {
+    #first {
+        background-size: auto 100%;
+    }
+}
