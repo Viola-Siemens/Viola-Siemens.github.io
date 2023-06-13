@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title>海洋的世界-配置文件生成器</title>
+	<script type="text/javascript" src="js/echarts.min.js"></script>
+	<script type="text/javascript" src="js/ecSimpleTransform.min.js"></script>
+	<script type="text/javascript" src="js/ecStat.min.js"></script>
+	<script type="text/javascript" src="js/jquery-3.7.0.min.js"></script>
+	<script type="text/javascript" src="js/numeric.js"></script>
+	<script type="text/javascript" src="js/oceanworld-config-builder.js"></script>
+	<script type="text/javascript">
+		let MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS;
+		let DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS;
+		let OCEAN_TO_COAST_CONTINENTALNESS;
+		let COAST_TO_INLAND_CONTINENTALNESS;
+		let NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS;
+		let MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS;
+		let PEAKS_CONTINENTALNESS;
+		
+		let MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER;
+		let DEEP_OCEAN_TO_OCEAN_SHAPER;
+		let OCEAN_TO_COAST_SHAPER;
+		let COAST_WATER_SHAPER;
+		let COAST_BANK_SHAPER;
+		let COAST_LAND_SHAPER;
+		let NEAR_INLAND_SHAPER;
+		let INLAND_EROSION_SHAPER;
+		let MID_INLAND_SHAPER;
+		let PEAKS_EROSION_SHAPER;
+		
+		function generate() {
+			solve();
+			
+			document.getElementById("config-output").innerText = `{
+	"MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS": ${MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS},
+	"DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS": ${DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS},
+	"OCEAN_TO_COAST_CONTINENTALNESS": ${OCEAN_TO_COAST_CONTINENTALNESS},
+	"COAST_TO_INLAND_CONTINENTALNESS": ${COAST_TO_INLAND_CONTINENTALNESS},
+	"NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS": ${NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS},
+	"MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS": ${MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS},
+	"PEAKS_CONTINENTALNESS": ${PEAKS_CONTINENTALNESS},
+
+	"MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER": ${MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER},
+	"DEEP_OCEAN_TO_OCEAN_SHAPER": ${DEEP_OCEAN_TO_OCEAN_SHAPER},
+	"OCEAN_TO_COAST_SHAPER": ${OCEAN_TO_COAST_SHAPER},
+	"COAST_WATER_SHAPER": ${COAST_WATER_SHAPER},
+	"COAST_BANK_SHAPER": ${COAST_BANK_SHAPER},
+	"COAST_LAND_SHAPER": ${COAST_LAND_SHAPER},
+	"NEAR_INLAND_SHAPER": ${NEAR_INLAND_SHAPER},
+	"INLAND_EROSION_SHAPER": ${INLAND_EROSION_SHAPER},
+	"MID_INLAND_SHAPER": ${MID_INLAND_SHAPER},
+	"PEAKS_EROSION_SHAPER": ${PEAKS_EROSION_SHAPER},
+	
+	"OCTAVE_CONTINENTALNESS_ADDER": ${document.getElementById("adder").value}
+}
+`		}
+		
+		function setImageSize() {
+			let imgsize = Math.pow(2, parseInt(document.getElementById("image-size").value));
+			setSize(imgsize);
+			document.getElementById("image-size-value").innerText = imgsize;
+		}
+		
+		function oceanworldLike() {
+			MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS = -1.01;
+			DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS = 0.29;
+			OCEAN_TO_COAST_CONTINENTALNESS = 0.42;
+			COAST_TO_INLAND_CONTINENTALNESS = 0.51;
+			NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS = 0.62;
+			MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS = 0.785;
+			PEAKS_CONTINENTALNESS = 0.9;
+			
+			MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER = -0.99;
+			DEEP_OCEAN_TO_OCEAN_SHAPER = 0.25;
+			OCEAN_TO_COAST_SHAPER = 0.325;
+			COAST_WATER_SHAPER = 0.43;
+			COAST_BANK_SHAPER = 0.47;
+			COAST_LAND_SHAPER = 0.48;
+			NEAR_INLAND_SHAPER = 0.52;
+			INLAND_EROSION_SHAPER = 0.64;
+			MID_INLAND_SHAPER = 0.76;
+			PEAKS_EROSION_SHAPER = 0.92;
+			
+			document.getElementById("adder").value = "1";
+			
+			maintain();
+		}
+		
+		function vanillaLike() {
+			MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS = -1.05;
+			DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS = -0.455;
+			OCEAN_TO_COAST_CONTINENTALNESS = -0.19;
+			COAST_TO_INLAND_CONTINENTALNESS = -0.11;
+			NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS = 0.03;
+			MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS = 0.3;
+			PEAKS_CONTINENTALNESS = 0.55;
+			
+			MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER = -1.02;
+			DEEP_OCEAN_TO_OCEAN_SHAPER = -0.51;
+			OCEAN_TO_COAST_SHAPER = -0.44;
+			COAST_WATER_SHAPER = -0.18;
+			COAST_BANK_SHAPER = -0.16;
+			COAST_LAND_SHAPER = -0.15;
+			NEAR_INLAND_SHAPER = -0.1;
+			INLAND_EROSION_SHAPER = 0.06;
+			MID_INLAND_SHAPER = 0.25;
+			PEAKS_EROSION_SHAPER = 0.65;
+			
+			document.getElementById("adder").value = "0";
+			
+			maintain();
+		}
+		
+		function maintain() {
+			let weights = [
+				MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS + 1.06,
+				DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS - MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS,
+				OCEAN_TO_COAST_CONTINENTALNESS - DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS,
+				COAST_TO_INLAND_CONTINENTALNESS - OCEAN_TO_COAST_CONTINENTALNESS,
+				NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS - COAST_TO_INLAND_CONTINENTALNESS,
+				MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS - NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS,
+				PEAKS_CONTINENTALNESS - MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS,
+				1.06 - PEAKS_CONTINENTALNESS
+			];
+			
+			document.getElementById('weight-mushroom_field').value = weights[0] * 100 / 2.12;
+			document.getElementById('weight-deep_ocean').value = weights[1] * 100 / 2.12;
+			document.getElementById('weight-ocean').value = weights[2] * 100 / 2.12;
+			document.getElementById('weight-beach').value = weights[3] * 100 / 2.12;
+			document.getElementById('weight-near_inland').value = weights[4] * 100 / 2.12;
+			document.getElementById('weight-mid_inland').value = weights[5] * 100 / 2.12;
+			document.getElementById('weight-far_inland').value = weights[6] * 100 / 2.12;
+			document.getElementById('weight-peaks').value = weights[7] * 100 / 2.12;
+			
+			document.getElementById('shaper-m2d').value = Math.sqrt((MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER - MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS) / (DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS - MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS)) * 100;
+			document.getElementById('shaper-d2o').value = (DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS - DEEP_OCEAN_TO_OCEAN_SHAPER) / ((DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS - MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS) / 2) * 100;
+			document.getElementById('shaper-o2c').value = (OCEAN_TO_COAST_SHAPER - DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS) / (OCEAN_TO_COAST_CONTINENTALNESS - DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS) * 100;
+			document.getElementById('shaper-cw').value = (COAST_WATER_SHAPER - OCEAN_TO_COAST_CONTINENTALNESS) / (COAST_TO_INLAND_CONTINENTALNESS - OCEAN_TO_COAST_CONTINENTALNESS) * 100;
+			document.getElementById('shaper-cb').value = (COAST_BANK_SHAPER - OCEAN_TO_COAST_CONTINENTALNESS) / (COAST_TO_INLAND_CONTINENTALNESS - OCEAN_TO_COAST_CONTINENTALNESS) * 100;
+			document.getElementById('shaper-cl').value = (COAST_LAND_SHAPER - OCEAN_TO_COAST_CONTINENTALNESS) / (COAST_TO_INLAND_CONTINENTALNESS - OCEAN_TO_COAST_CONTINENTALNESS) * 100;
+			document.getElementById('shaper-nearinland').value = (NEAR_INLAND_SHAPER - COAST_TO_INLAND_CONTINENTALNESS) / ((NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS - COAST_TO_INLAND_CONTINENTALNESS) / 2) * 100;
+			document.getElementById('shaper-inland').value = (INLAND_EROSION_SHAPER - NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS) / ((MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS - NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS) / 2) * 100;
+			document.getElementById('shaper-midinland').value = (MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS - MID_INLAND_SHAPER) / ((MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS - NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS) / 2) * 100;
+			document.getElementById('shaper-peak').value = (PEAKS_EROSION_SHAPER - PEAKS_CONTINENTALNESS) / (1.06 - PEAKS_CONTINENTALNESS) * 100;
+		}
+		
+		function computeConfigValues() {
+			let weights = [
+				parseFloat(document.getElementById('weight-mushroom_field').value),
+				parseFloat(document.getElementById('weight-deep_ocean').value),
+				parseFloat(document.getElementById('weight-ocean').value),
+				parseFloat(document.getElementById('weight-beach').value),
+				parseFloat(document.getElementById('weight-near_inland').value),
+				parseFloat(document.getElementById('weight-mid_inland').value),
+				parseFloat(document.getElementById('weight-far_inland').value),
+				parseFloat(document.getElementById('weight-peaks').value)
+			];
+			let weight_sum = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+			for(let i in weights) {
+				weight_sum[parseInt(i) + 1] = weight_sum[i] + weights[i];
+			}
+			MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS = parseFloat((-1.06 + (weight_sum[1] * 2.12 / weight_sum[weights.length])).toFixed(4));
+			DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS = parseFloat((-1.06 + (weight_sum[2] * 2.12 / weight_sum[weights.length])).toFixed(4));
+			OCEAN_TO_COAST_CONTINENTALNESS = parseFloat((-1.06 + (weight_sum[3] * 2.12 / weight_sum[weights.length])).toFixed(4));
+			COAST_TO_INLAND_CONTINENTALNESS = parseFloat((-1.06 + (weight_sum[4] * 2.12 / weight_sum[weights.length])).toFixed(4));
+			NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS = parseFloat((-1.06 + (weight_sum[5] * 2.12 / weight_sum[weights.length])).toFixed(4));
+			MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS = parseFloat((-1.06 + (weight_sum[6] * 2.12 / weight_sum[weights.length])).toFixed(4));
+			PEAKS_CONTINENTALNESS = parseFloat((-1.06 + (weight_sum[7] * 2.12 / weight_sum[weights.length])).toFixed(4));
+			
+			let shapers = [
+				parseFloat(document.getElementById('shaper-m2d').value) / 100,
+				parseFloat(document.getElementById('shaper-d2o').value) / 100,
+				parseFloat(document.getElementById('shaper-o2c').value) / 100,
+				parseFloat(document.getElementById('shaper-cw').value) / 100,
+				parseFloat(document.getElementById('shaper-cb').value) / 100,
+				parseFloat(document.getElementById('shaper-cl').value) / 100,
+				parseFloat(document.getElementById('shaper-nearinland').value) / 100,
+				parseFloat(document.getElementById('shaper-inland').value) / 100,
+				parseFloat(document.getElementById('shaper-midinland').value) / 100,
+				parseFloat(document.getElementById('shaper-peak').value) / 100
+			];
+			MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER = parseFloat((shapers[0] * shapers[0] * (DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS - MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS) + MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS).toFixed(4));
+			DEEP_OCEAN_TO_OCEAN_SHAPER = parseFloat((DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS - shapers[1] * ((DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS - MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS) / 2)).toFixed(4));
+			OCEAN_TO_COAST_SHAPER = parseFloat((shapers[2] * (OCEAN_TO_COAST_CONTINENTALNESS - DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS) + DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS).toFixed(4));
+			COAST_WATER_SHAPER = parseFloat((shapers[3] * (COAST_TO_INLAND_CONTINENTALNESS - OCEAN_TO_COAST_CONTINENTALNESS) + OCEAN_TO_COAST_CONTINENTALNESS).toFixed(4));
+			COAST_BANK_SHAPER = parseFloat((shapers[4] * (COAST_TO_INLAND_CONTINENTALNESS - OCEAN_TO_COAST_CONTINENTALNESS) + OCEAN_TO_COAST_CONTINENTALNESS).toFixed(4));
+			COAST_LAND_SHAPER = parseFloat((shapers[5] * (COAST_TO_INLAND_CONTINENTALNESS - OCEAN_TO_COAST_CONTINENTALNESS) + OCEAN_TO_COAST_CONTINENTALNESS).toFixed(4));
+			NEAR_INLAND_SHAPER = parseFloat((shapers[6] * ((NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS - COAST_TO_INLAND_CONTINENTALNESS) / 2) + COAST_TO_INLAND_CONTINENTALNESS).toFixed(4));
+			INLAND_EROSION_SHAPER = parseFloat((shapers[7] * ((MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS - NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS) / 2) + NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS).toFixed(4));
+			MID_INLAND_SHAPER = parseFloat((MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS - shapers[8] * ((MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS - NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS) / 2)).toFixed(4));
+			PEAKS_EROSION_SHAPER = parseFloat((shapers[9] * (1.06 - PEAKS_CONTINENTALNESS) + PEAKS_CONTINENTALNESS).toFixed(4));
+		}
+		
+		function coastShaperChange(ind) {
+			const shapers = [
+				document.getElementById("shaper-cw"),
+				document.getElementById("shaper-cb"),
+				document.getElementById("shaper-cl")
+			];
+			switch(ind) {
+				case 0:
+					if(shapers[0].value >= shapers[1].value) {
+						shapers[0].value = shapers[1].value - 0.001;
+					}
+					break;
+				case 1:
+					if(shapers[1].value >= shapers[2].value) {
+						shapers[1].value = shapers[2].value - 0.001;
+					}
+					if(shapers[0].value >= shapers[1].value) {
+						shapers[1].value = shapers[0].value + 0.001;
+					}
+					break;
+				case 2:
+					if(shapers[1].value >= shapers[2].value) {
+						shapers[2].value = shapers[1].value + 0.001;
+					}
+					break;
+				default:
+					break;
+			}
+		}
+		
+		function copy() {
+			navigator.clipboard.writeText(document.getElementById("config-output").innerText)
+				.then(() => alert("复制成功！\nSuccessfully Copied!"))
+				.catch((e) => console.error(e.message));
+		}
+	</script>
+	<style>
+		p {
+			margin-bottom: 4px;
+			margin-top: 16px;
+		}
+		p.comment {
+			color: gray;
+			font-size: 8px;
+			margin-top: 0px;
+			margin-bottom: 0px;
+		}
+		.right-align {
+			text-align: right;
+		}
+		input[type="range"] {
+			width: 400px;
+		}
+	</style>
+</head>
+<body>
+	<div id="form-div">
+		<form>
+			<p>种子（Seed）：<input type="number" id="seed" value="42" />　　<button onclick="generate()" type="button">生成<br/>Generate</button></p>
+			<p class="comment">
+				此项与生成配置文件无关，仅用于展示图表。并非Minecraft游戏中用于生成世界的种子。<br/>
+				This field do nothing for generating your config file, but important for displaying chart. This seed is NOT the one for generating the world in Minecraft.
+			</p>
+			<p>生成图像大小（Preview Image Size）：<input type="range" id="image-size" min="5" max="12" step="1" value="9" onchange="setImageSize()" />　<span id="image-size-value">512</span></p>
+			<p class="comment">
+				预览图片的尺寸（单位：方块），此项与生成配置文件无关。<br/>
+				较大的尺寸会生成得更慢，但能生成更大区域的预览。<br/>
+				Side length (in blocks) of the preview image. This field do nothing for generating your config file.<br/>
+				Larger size will slow down the generating speed of preview image, but show larger space of the world.
+			</p>
+			<p>使用预设（Use Presets）：<button onclick="vanillaLike()" type="button">原版（Vanilla）</button>　<button onclick="oceanworldLike()" type="button">Oceanworld</button></p>
+			<p>倍频增量（Octave Adder）：<input type="range" id="adder" min="-6" max="6" step="1" value="0" /></p>
+			<p class="comment">
+				更大的倍频增量将缩小陆地的尺寸，但地形起伏更大，更破碎。<br/>
+				Larger octave adder will reduce the size of the landmass, but the terrain will be more undulating and broken.
+			</p>
+			<div id="biome-div" style="float: left; margin-right: 50px;">
+				<h4>群系权重（Weights of Biomes）：</h4>
+				<p class="comment">
+					这一节的每一项均与群系生成有关，权重越大，对应的群系生成概率越高。<br/>
+					Each field in this section is related to biome generation.<br/>
+					Larger weight makes it more possible to generate corresponding biomes.
+				</p>
+				<p class="right-align">Mushroom Field: <input type="range" id="weight-mushroom_field" step="0.001" min="0" max="100" /></p>
+				<p class="right-align">Deep Ocean: <input type="range" id="weight-deep_ocean" step="0.001" min="0" max="100" /></p>
+				<p class="right-align">Ocean: <input type="range" id="weight-ocean" step="0.001" min="0" max="100" /></p>
+				<p class="right-align">Beach and Shore: <input type="range" id="weight-beach" step="0.001" min="0" max="100" /></p>
+				<p class="right-align">Plains: <input type="range" id="weight-near_inland" step="0.001" min="0" max="100" /></p>
+				<p class="right-align">Swamps and Forests: <input type="range" id="weight-mid_inland" step="0.001" min="0" max="100" /></p>
+				<p class="right-align">Plateaus: <input type="range" id="weight-far_inland" step="0.001" min="0" max="100" /></p>
+				<p class="right-align">Peaks and Mountains: <input type="range" id="weight-peaks" step="0.001" min="0" max="100" /></p>
+			</div>
+			<div id="terrain-div" style="float: left; margin-left: 50px;">
+				<h4>地形修饰（Shape of Terrain）：</h4>
+				<p class="comment">
+					这一节的每一项均与地形生成有关，你可以打开地形视图，甚至关闭群系视图来查看地形图。<br/>
+					不要轻易大幅度改动这些值，除非你知道你在干什么。<br/>
+					Each field in this section is related to terrain generation.<br/>
+					You can enable the terrain view, and even disable biome view if you want, to check the relief map.<br/>
+					Don't substantially change these values - not unless you know what are you doing.
+				</p>
+				<p class="right-align">Mushroom Field to Deep Ocean: <input type="range" id="shaper-m2d" step="0.005" min="0" max="100" /></p>
+				<p class="right-align">Deep Ocean to Ocean: <input type="range" id="shaper-d2o" step="0.005" min="0" max="100" /></p>
+				<p class="right-align">Ocean to Coast: <input type="range" id="shaper-o2c" step="0.005" min="0" max="100" /></p>
+				<p class="right-align">Coast Water: <input type="range" id="shaper-cw" step="0.005" min="0" max="100" onchange="coastShaperChange(0)" /></p>
+				<p class="right-align">Coast Bank: <input type="range" id="shaper-cb" step="0.005" min="0" max="100" onchange="coastShaperChange(1)" /></p>
+				<p class="right-align">Coast Land: <input type="range" id="shaper-cl" step="0.005" min="0" max="100" onchange="coastShaperChange(2)" /></p>
+				<p class="right-align">Near Inland: <input type="range" id="shaper-nearinland" step="0.005" min="0" max="100" /></p>
+				<p class="right-align">Inland Erosion: <input type="range" id="shaper-inland" step="0.005" min="0" max="100" /></p>
+				<p class="right-align">Mid-inland: <input type="range" id="shaper-midinland" step="0.005" min="0" max="100" /></p>
+				<p class="right-align">Peak Erosion: <input type="range" id="shaper-peak" step="0.005" min="0" max="100" /></p>
+			</div>
+		</form>
+	</div>
+	<div id="chart">
+		<div id="main" style="height: 800px; width: 1000px; float: left;"></div>
+		<script type="text/javascript">
+			oceanworldLike();
+			
+			let cubic = function(params,x) {
+				return ((params[0] * x + params[1]) * x + params[2]) * x + params[3];
+			};
+			
+			function computeExtraShowParameters() {
+				let mushroom_field_data_x = [-1.1, MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER, DEEP_OCEAN_TO_OCEAN_SHAPER, OCEAN_TO_COAST_SHAPER];
+				let mushroom_field_data_y = [0.044, -0.2222, -0.2222, -0.12];
+				let mushroom_field_objective = function(params) {
+					let total = 0.0;
+					for(let i = 0; i < mushroom_field_data_x.length; ++i) {
+						let resultThisDatum = cubic(params, mushroom_field_data_x[i]);
+						let delta = resultThisDatum - mushroom_field_data_y[i];
+						total += delta * delta;
+					}
+					return total;
+				};
+				let mushroom_field_initial = [1, 1, 1, 1];
+				let mushroom_field_minimiser = numeric.uncmin(mushroom_field_objective, mushroom_field_initial);
+				let mushroom_field_parameters = mushroom_field_minimiser.solution;
+				console.log(mushroom_field_parameters);
+				let mushroom_field_bank_left = -1.1;
+				let mushroom_field_bank_right = MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER;
+				while(mushroom_field_bank_right - mushroom_field_bank_left > 1e-7) {
+					let m = (mushroom_field_bank_left + mushroom_field_bank_right) / 2;
+					if(cubic(mushroom_field_parameters, m) == 0) {
+						mushroom_field_bank_left = m;
+						break;
+					} else if(cubic(mushroom_field_parameters, m) > 0) {
+						mushroom_field_bank_left = m;
+					} else {
+						mushroom_field_bank_right = m;
+					}
+				}
+				
+				return [mushroom_field_bank_left, COAST_BANK_SHAPER]
+			}
+			
+			function solve() {
+				computeConfigValues();
+				let parameters = computeExtraShowParameters();
+				
+				var noise = generateNoise();
+				var chart = echarts.init(document.querySelector("div#main"), 'white', { renderer: 'canvas' });
+				const option = {
+					tooltip: {},
+					toolbox: {
+						feature: {
+							saveAsImage: {}
+						}
+					},
+					grid: {
+						left: 200
+					},
+					xAxis: {
+						type: "category"
+					},
+					yAxis: {
+						type: "category"
+					},
+					visualMap: [
+					/*
+						{
+							min: -1,
+							max: 1,
+							calculable: true,
+							realtime: false,
+							inRange: {
+								color: ['#313695', '#4575b4', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
+							}
+						}
+					*/
+						{
+							seriesIndex: 0,
+							z: 0,
+							type: 'piecewise',
+							pieces: [
+								{max: MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS, label: "Mushroom Fields", color: '#FE74FA'},
+								{min: MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS, max: DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS, label: "Deep Ocean", color: '#323896'},
+								{min: DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS, max: OCEAN_TO_COAST_CONTINENTALNESS, label: "Ocean", color: '#6CA2C6'},
+								{min: OCEAN_TO_COAST_CONTINENTALNESS, max: COAST_TO_INLAND_CONTINENTALNESS, label: "Beach and Shore", color: '#FEFEBE'},
+								{min: COAST_TO_INLAND_CONTINENTALNESS, max: NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS, label: "Plains", color: '#46FA44'},
+								{min: NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS, max: MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS, label: "Swamps and Forests", color: '#08BC06'},
+								{min: MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS, max: PEAKS_CONTINENTALNESS, label: "Plateaus", color: '#9EB49E'},
+								{min: PEAKS_CONTINENTALNESS, label: "Peaks and Mountains", color: '#C2C2C2'},
+							],
+							calculable: true,
+							realtime: false,
+							left: 'left',
+							top: 'top',
+							orient: 'vertical'
+						},
+						{
+							seriesIndex: 1,
+							z: 20,
+							type: 'piecewise',
+							pieces: [
+								{max: parameters[0], label: "Mushroom Island", color: 'rgba(250, 8, 96, 0.15)'},
+								{min: parameters[0], max: parameters[1], label: "Ocean", color: 'rgba(16, 16, 24, 0.15)'},
+								{min: parameters[1], label: "Landmasses", color: 'rgba(254, 4, 12, 0.15)'}
+							],
+							calculable: true,
+							realtime: false,
+							left: 'left',
+							top: 'bottom',
+							orient: 'vertical'
+						}
+					],
+					series: [{
+						id: 0,
+						type: "heatmap",
+						data: noise
+					}, {
+						id: 1,
+						type: "heatmap",
+						data: noise
+					}]
+				};
+				chart.setOption(option);
+			 }
+		</script>
+		<div id="config" style="float: left;">
+			<pre id="config-output" style="height: 600px; width: 450px; border-style:solid; border-width: 1px;">
+			</pre>
+			<button type="button" onclick="copy()">复制（Copy）</button>
+		</div>
+	</div>
+</body>
+</html>
