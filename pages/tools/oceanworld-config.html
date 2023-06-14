@@ -63,6 +63,12 @@
 			document.getElementById("image-size-value").innerText = imgsize;
 		}
 		
+		function setImageScale() {
+			let imgscale = Math.pow(2, parseInt(document.getElementById("image-scale").value));
+			setScale(imgscale);
+			document.getElementById("image-scale-value").innerText = imgscale;
+		}
+		
 		function oceanworldLike() {
 			MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS = -1.01;
 			DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS = 0.29;
@@ -134,7 +140,7 @@
 			document.getElementById('weight-far_inland').value = weights[6] * 100 / 2.12;
 			document.getElementById('weight-peaks').value = weights[7] * 100 / 2.12;
 			
-			document.getElementById('shaper-m2d').value = Math.sqrt((MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER - MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS) / (DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS - MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS)) * 100;
+			document.getElementById('shaper-m2d').value = Math.pow((MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER - MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS) / (DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS - MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS), 2.0) * 100;
 			document.getElementById('shaper-d2o').value = (DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS - DEEP_OCEAN_TO_OCEAN_SHAPER) / ((DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS - MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS) / 2) * 100;
 			document.getElementById('shaper-o2c').value = (OCEAN_TO_COAST_SHAPER - DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS) / (OCEAN_TO_COAST_CONTINENTALNESS - DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS) * 100;
 			document.getElementById('shaper-cw').value = (COAST_WATER_SHAPER - OCEAN_TO_COAST_CONTINENTALNESS) / (COAST_TO_INLAND_CONTINENTALNESS - OCEAN_TO_COAST_CONTINENTALNESS) * 100;
@@ -181,7 +187,7 @@
 				parseFloat(document.getElementById('shaper-midinland').value) / 100,
 				parseFloat(document.getElementById('shaper-peak').value) / 100
 			];
-			MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER = parseFloat((shapers[0] * shapers[0] * (DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS - MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS) + MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS).toFixed(4));
+			MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER = parseFloat((Math.sqrt(shapers[0]) * (DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS - MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS) + MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS).toFixed(4));
 			DEEP_OCEAN_TO_OCEAN_SHAPER = parseFloat((DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS - shapers[1] * ((DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS - MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS) / 2)).toFixed(4));
 			OCEAN_TO_COAST_SHAPER = parseFloat((shapers[2] * (OCEAN_TO_COAST_CONTINENTALNESS - DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS) + DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS).toFixed(4));
 			COAST_WATER_SHAPER = parseFloat((shapers[3] * (COAST_TO_INLAND_CONTINENTALNESS - OCEAN_TO_COAST_CONTINENTALNESS) + OCEAN_TO_COAST_CONTINENTALNESS).toFixed(4));
@@ -202,20 +208,20 @@
 			switch(ind) {
 				case 0:
 					if(shapers[0].value >= shapers[1].value) {
-						shapers[0].value = shapers[1].value - 0.001;
+						shapers[0].value = parseFloat(shapers[1].value) - 0.001;
 					}
 					break;
 				case 1:
 					if(shapers[1].value >= shapers[2].value) {
-						shapers[1].value = shapers[2].value - 0.001;
+						shapers[1].value = parseFloat(shapers[2].value) - 0.001;
 					}
 					if(shapers[0].value >= shapers[1].value) {
-						shapers[1].value = shapers[0].value + 0.001;
+						shapers[1].value = parseFloat(shapers[0].value) + 0.001;
 					}
 					break;
 				case 2:
 					if(shapers[1].value >= shapers[2].value) {
-						shapers[2].value = shapers[1].value + 0.001;
+						shapers[2].value = parseFloat(shapers[1].value) + 0.001;
 					}
 					break;
 				default:
@@ -256,13 +262,24 @@
 				此项与生成配置文件无关，仅用于展示图表。并非Minecraft游戏中用于生成世界的种子。<br/>
 				This field do nothing for generating your config file, but important for displaying chart. This seed is NOT the one for generating the world in Minecraft.
 			</p>
-			<p>生成图像大小（Preview Image Size）：<input type="range" id="image-size" min="5" max="12" step="1" value="9" onchange="setImageSize()" />　<span id="image-size-value">512</span></p>
-			<p class="comment">
-				预览图片的尺寸（单位：方块），此项与生成配置文件无关。<br/>
-				较大的尺寸会生成得更慢，但能生成更大区域的预览。<br/>
-				Side length (in blocks) of the preview image. This field do nothing for generating your config file.<br/>
-				Larger size will slow down the generating speed of preview image, but show larger space of the world.
-			</p>
+			<div style="float: left; margin-right: 80px;">
+				<p>生成图像大小（Preview Image Size）：<input type="range" id="image-size" min="5" max="12" step="1" value="9" onchange="setImageSize()" />　<span id="image-size-value">512</span></p>
+				<p class="comment">
+					预览图片的尺寸（单位：方块），此项与生成配置文件无关。<br/>
+					较大的尺寸会生成得更慢，但能生成更大区域的预览。<br/>
+					Side length (in blocks) of the preview image. This field do nothing for generating your config file.<br/>
+					Larger size will slow down the generating speed of preview image, but show larger space of the world.
+				</p>
+			</div>
+			<div style="margin-right: 80px;">
+				<p>生成图像缩放（Preview Image Scale）：<input type="range" id="image-scale" min="0" max="4" step="1" value="0" onchange="setImageScale()" />　<span id="image-scale-value">1</span></p>
+				<p class="comment">
+					预览图片的缩放（单位：方块），此项与生成配置文件无关。<br/>
+					较大的缩放会加速预览的生成，但能生成的图片质量更差。<br/>
+					Scale (in blocks) of the preview image. This field do nothing for generating your config file.<br/>
+					Larger scale will make it faster for generating the preview image, but the quality will be sacrificed.
+				</p>
+			</div>
 			<p>使用预设（Use Presets）：<button onclick="vanillaLike()" type="button">原版（Vanilla）</button>　<button onclick="oceanworldLike()" type="button">Oceanworld</button></p>
 			<p>倍频增量（Octave Adder）：<input type="range" id="adder" min="-6" max="6" step="1" value="0" /></p>
 			<p class="comment">

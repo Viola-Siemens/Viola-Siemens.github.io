@@ -23,6 +23,15 @@ function setSize(newSize) {
 	}
 }
 
+let _Scale = 0;
+function setScale(newScale) {
+	if((newScale & (-newScale)) == newScale) {
+		_Scale = newScale - 1;
+	} else {
+		throw `ValueError: ${newScale} is not power of 2! Try 1, 2, 4...`;
+	}
+}
+
 let _holdrand = 42;
 function srand(seed) {
     _holdrand = seed;
@@ -151,8 +160,12 @@ function generateNoise() {
 		}
 	}
 	for(let i = 0; i < _Size; ++i) {
-		for(let j = 0; j < _Size; ++j) {
-			noise.push([i, j, maph[i][j] * 1.625]);
+		if((i & _Scale) == 0) {
+			for(let j = 0; j < _Size; ++j) {
+				if((j & _Scale) == 0) {
+					noise.push([i, j, maph[i][j] * 1.625]);
+				}
+			}
 		}
 	}
 	return noise;
