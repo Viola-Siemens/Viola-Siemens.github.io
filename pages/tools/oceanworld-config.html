@@ -234,6 +234,10 @@
 				.then(() => alert("复制成功！\nSuccessfully Copied!"))
 				.catch((e) => console.error(e.message));
 		}
+		
+		function randomSeed() {
+			document.getElementById("seed").value = Math.floor(Math.random() * 4294967296);
+		}
 	</script>
 	<style>
 		p {
@@ -257,7 +261,7 @@
 <body>
 	<div id="form-div">
 		<form>
-			<p>种子（Seed）：<input type="number" id="seed" value="42" />　　<button onclick="generate()" type="button">生成<br/>Generate</button></p>
+			<p>种子（Seed）：<input type="number" id="seed" value="42" />　　<button onclick="randomSeed()" type="button"><img src="img/dice.png" width="24px" /></button>　　<button onclick="generate()" type="button">生成<br/>Generate</button></p>
 			<p class="comment">
 				此项与生成配置文件无关，仅用于展示图表。并非Minecraft游戏中用于生成世界的种子。<br/>
 				This field do nothing for generating your config file, but important for displaying chart. This seed is NOT the one for generating the world in Minecraft.
