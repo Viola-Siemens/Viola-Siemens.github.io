@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8" />
-	<title>海洋的世界-配置文件生成器</title>
+	<title>自定义世界生成-配置文件生成器</title>
 	<script type="text/javascript" src="js/echarts.min.js"></script>
 	<script type="text/javascript" src="js/ecSimpleTransform.min.js"></script>
 	<script type="text/javascript" src="js/ecStat.min.js"></script>
@@ -11,6 +11,15 @@
 	<script type="text/javascript" src="js/numeric.js"></script>
 	<script type="text/javascript" src="js/oceanworld-config-builder.js"></script>
 	<script type="text/javascript">
+		let FROZEN_TEMPERATURE;
+		let COOL_TEMPERATURE;
+		let WARM_TEMPERATURE;
+		let HOT_TEMPERATURE;
+		let ARID_HUMIDITY;
+		let DRY_HUMIDITY;
+		let WET_HUMIDITY;
+		let HUMID_HUMIDITY;
+		
 		let MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS;
 		let DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS;
 		let OCEAN_TO_COAST_CONTINENTALNESS;
@@ -30,10 +39,21 @@
 		let MID_INLAND_SHAPER;
 		let PEAKS_EROSION_SHAPER;
 		
+		let STRUCTURE_DENSITY_MULTIPLIER;
+		
 		function generate() {
 			solve();
 			
 			document.getElementById("config-output").innerText = `{
+	"FROZEN_TEMPERATURE": ${FROZEN_TEMPERATURE},
+	"COOL_TEMPERATURE": ${COOL_TEMPERATURE},
+	"WARM_TEMPERATURE": ${WARM_TEMPERATURE},
+	"HOT_TEMPERATURE": ${HOT_TEMPERATURE},
+	"ARID_HUMIDITY": ${ARID_HUMIDITY},
+	"DRY_HUMIDITY": ${DRY_HUMIDITY},
+	"WET_HUMIDITY": ${WET_HUMIDITY},
+	"HUMID_HUMIDITY": ${HUMID_HUMIDITY},
+	
 	"MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS": ${MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS},
 	"DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS": ${DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS},
 	"OCEAN_TO_COAST_CONTINENTALNESS": ${OCEAN_TO_COAST_CONTINENTALNESS},
@@ -41,7 +61,7 @@
 	"NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS": ${NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS},
 	"MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS": ${MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS},
 	"PEAKS_CONTINENTALNESS": ${PEAKS_CONTINENTALNESS},
-
+	
 	"MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER": ${MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER},
 	"DEEP_OCEAN_TO_OCEAN_SHAPER": ${DEEP_OCEAN_TO_OCEAN_SHAPER},
 	"OCEAN_TO_COAST_SHAPER": ${OCEAN_TO_COAST_SHAPER},
@@ -53,7 +73,12 @@
 	"MID_INLAND_SHAPER": ${MID_INLAND_SHAPER},
 	"PEAKS_EROSION_SHAPER": ${PEAKS_EROSION_SHAPER},
 	
-	"OCTAVE_CONTINENTALNESS_ADDER": ${document.getElementById("adder").value}
+	"OCTAVE_TEMPERATURE_ADDER": ${document.getElementById("temperature-adder").value},
+	"OCTAVE_HUMIDITY_ADDER": ${document.getElementById("humidity-adder").value},
+	"OCTAVE_CONTINENTALNESS_ADDER": ${document.getElementById("adder").value},
+	
+	"STRUCTURE_DENSITY_MULTIPLIER": ${STRUCTURE_DENSITY_MULTIPLIER},
+	"ENABLE_MUSHROOM_FIELDS_SPAWN": false
 }
 `		}
 		
@@ -70,6 +95,15 @@
 		}
 		
 		function oceanworldLike() {
+			FROZEN_TEMPERATURE = -0.45;
+			COOL_TEMPERATURE = -0.15;
+			WARM_TEMPERATURE = 0.2;
+			HOT_TEMPERATURE = 0.55;
+			ARID_HUMIDITY = -0.35;
+			DRY_HUMIDITY = -0.1;
+			WET_HUMIDITY = 0.1;
+			HUMID_HUMIDITY = 0.3;
+			
 			MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS = -1.01;
 			DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS = 0.29;
 			OCEAN_TO_COAST_CONTINENTALNESS = 0.42;
@@ -89,12 +123,25 @@
 			MID_INLAND_SHAPER = 0.76;
 			PEAKS_EROSION_SHAPER = 0.92;
 			
+			document.getElementById("temperature-adder").value = "0";
+			document.getElementById("humidity-adder").value = "0";
 			document.getElementById("adder").value = "1";
+			
+			STRUCTURE_DENSITY_MULTIPLIER = 1.2;
 			
 			maintain();
 		}
 		
 		function vanillaLike() {
+			FROZEN_TEMPERATURE = -0.45;
+			COOL_TEMPERATURE = -0.15;
+			WARM_TEMPERATURE = 0.2;
+			HOT_TEMPERATURE = 0.55;
+			ARID_HUMIDITY = -0.35;
+			DRY_HUMIDITY = -0.1;
+			WET_HUMIDITY = 0.1;
+			HUMID_HUMIDITY = 0.3;
+			
 			MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS = -1.05;
 			DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS = -0.455;
 			OCEAN_TO_COAST_CONTINENTALNESS = -0.19;
@@ -114,12 +161,17 @@
 			MID_INLAND_SHAPER = 0.25;
 			PEAKS_EROSION_SHAPER = 0.65;
 			
+			document.getElementById("temperature-adder").value = "0";
+			document.getElementById("humidity-adder").value = "0";
 			document.getElementById("adder").value = "0";
+			
+			STRUCTURE_DENSITY_MULTIPLIER = 1;
 			
 			maintain();
 		}
 		
 		function maintain() {
+			//continentalness
 			let weights = [
 				MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS + 1.06,
 				DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS - MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS,
@@ -150,9 +202,40 @@
 			document.getElementById('shaper-inland').value = (INLAND_EROSION_SHAPER - NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS) / ((MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS - NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS) / 2) * 100;
 			document.getElementById('shaper-midinland').value = (MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS - MID_INLAND_SHAPER) / ((MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS - NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS) / 2) * 100;
 			document.getElementById('shaper-peak').value = (PEAKS_EROSION_SHAPER - PEAKS_CONTINENTALNESS) / (1.06 - PEAKS_CONTINENTALNESS) * 100;
+			
+			//temperature
+			weights = [
+				FROZEN_TEMPERATURE + 1.0,
+				COOL_TEMPERATURE - FROZEN_TEMPERATURE,
+				WARM_TEMPERATURE - COOL_TEMPERATURE,
+				HOT_TEMPERATURE - WARM_TEMPERATURE,
+				1.0 - HOT_TEMPERATURE
+			];
+			
+			document.getElementById('weight-temperature-cold').value = weights[0] * 100 / 2.0;
+			document.getElementById('weight-temperature-cool').value = weights[1] * 100 / 2.0;
+			document.getElementById('weight-temperature-neutral').value = weights[2] * 100 / 2.0;
+			document.getElementById('weight-temperature-warm').value = weights[3] * 100 / 2.0;
+			document.getElementById('weight-temperature-hot').value = weights[4] * 100 / 2.0;
+			
+			//humidity
+			weights = [
+				ARID_HUMIDITY + 1.0,
+				DRY_HUMIDITY - ARID_HUMIDITY,
+				WET_HUMIDITY - DRY_HUMIDITY,
+				HUMID_HUMIDITY - WET_HUMIDITY,
+				1.0 - HUMID_HUMIDITY
+			];
+			
+			document.getElementById('weight-humidity-arid').value = weights[0] * 100 / 2.0;
+			document.getElementById('weight-humidity-dry').value = weights[1] * 100 / 2.0;
+			document.getElementById('weight-humidity-neutral').value = weights[2] * 100 / 2.0;
+			document.getElementById('weight-humidity-wet').value = weights[3] * 100 / 2.0;
+			document.getElementById('weight-humidity-humid').value = weights[4] * 100 / 2.0;
 		}
 		
 		function computeConfigValues() {
+			//continentalness
 			let weights = [
 				parseFloat(document.getElementById('weight-mushroom_field').value),
 				parseFloat(document.getElementById('weight-deep_ocean').value),
@@ -197,6 +280,40 @@
 			INLAND_EROSION_SHAPER = parseFloat((shapers[7] * ((MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS - NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS) / 2) + NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS).toFixed(4));
 			MID_INLAND_SHAPER = parseFloat((MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS - shapers[8] * ((MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS - NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS) / 2)).toFixed(4));
 			PEAKS_EROSION_SHAPER = parseFloat((shapers[9] * (1.06 - PEAKS_CONTINENTALNESS) + PEAKS_CONTINENTALNESS).toFixed(4));
+			
+			//temperature
+			weights = [
+				parseFloat(document.getElementById('weight-temperature-cold').value),
+				parseFloat(document.getElementById('weight-temperature-cool').value),
+				parseFloat(document.getElementById('weight-temperature-neutral').value),
+				parseFloat(document.getElementById('weight-temperature-warm').value),
+				parseFloat(document.getElementById('weight-temperature-hot').value)
+			];
+			weight_sum = [0, 0, 0, 0, 0, 0];
+			for(let i in weights) {
+				weight_sum[parseInt(i) + 1] = weight_sum[i] + weights[i];
+			}
+			FROZEN_TEMPERATURE = parseFloat((-1.0 + (weight_sum[1] * 2.0 / weight_sum[weights.length])).toFixed(4));
+			COOL_TEMPERATURE = parseFloat((-1.0 + (weight_sum[2] * 2.0 / weight_sum[weights.length])).toFixed(4));
+			WARM_TEMPERATURE = parseFloat((-1.0 + (weight_sum[3] * 2.0 / weight_sum[weights.length])).toFixed(4));
+			HOT_TEMPERATURE = parseFloat((-1.0 + (weight_sum[4] * 2.0 / weight_sum[weights.length])).toFixed(4));
+			
+			//humidity
+			weights = [
+				parseFloat(document.getElementById('weight-humidity-arid').value),
+				parseFloat(document.getElementById('weight-humidity-dry').value),
+				parseFloat(document.getElementById('weight-humidity-neutral').value),
+				parseFloat(document.getElementById('weight-humidity-wet').value),
+				parseFloat(document.getElementById('weight-humidity-humid').value)
+			];
+			weight_sum = [0, 0, 0, 0, 0, 0];
+			for(let i in weights) {
+				weight_sum[parseInt(i) + 1] = weight_sum[i] + weights[i];
+			}
+			ARID_HUMIDITY = parseFloat((-1.0 + (weight_sum[1] * 2.0 / weight_sum[weights.length])).toFixed(4));
+			DRY_HUMIDITY = parseFloat((-1.0 + (weight_sum[2] * 2.0 / weight_sum[weights.length])).toFixed(4));
+			WET_HUMIDITY = parseFloat((-1.0 + (weight_sum[3] * 2.0 / weight_sum[weights.length])).toFixed(4));
+			HUMID_HUMIDITY = parseFloat((-1.0 + (weight_sum[4] * 2.0 / weight_sum[weights.length])).toFixed(4));
 		}
 		
 		function coastShaperChange(ind) {
@@ -259,6 +376,7 @@
 	</style>
 </head>
 <body>
+	<p><b>如果出现问题，请清空浏览器缓存并刷新页面。<br/>If error occurs, please clear the cache of your browser and refresh the page.</b></p>
 	<div id="form-div">
 		<form>
 			<p>种子（Seed）：<input type="number" id="seed" value="42" />　　<button onclick="randomSeed()" type="button"><img src="img/dice.png" width="24px" /></button>　　<button onclick="generate()" type="button">生成<br/>Generate</button></p>
@@ -285,53 +403,96 @@
 				</p>
 			</div>
 			<p>使用预设（Use Presets）：<button onclick="vanillaLike()" type="button">原版（Vanilla）</button>　<button onclick="oceanworldLike()" type="button">Oceanworld</button></p>
-			<p>倍频增量（Octave Adder）：<input type="range" id="adder" min="-6" max="6" step="1" value="0" /></p>
-			<p class="comment">
-				更大的倍频增量将缩小陆地的尺寸，但地形起伏更大，更破碎。<br/>
-				Larger octave adder will reduce the size of the landmass, but the terrain will be more undulating and broken.
-			</p>
-			<div id="biome-div" style="float: left; margin-right: 50px;">
-				<h4>群系权重（Weights of Biomes）：</h4>
-				<p class="comment">
-					这一节的每一项均与群系生成有关，权重越大，对应的群系生成概率越高。<br/>
-					Each field in this section is related to biome generation.<br/>
-					Larger weight makes it more possible to generate corresponding biomes.
-				</p>
-				<p class="right-align">Mushroom Field: <input type="range" id="weight-mushroom_field" step="0.001" min="0" max="100" /></p>
-				<p class="right-align">Deep Ocean: <input type="range" id="weight-deep_ocean" step="0.001" min="0" max="100" /></p>
-				<p class="right-align">Ocean: <input type="range" id="weight-ocean" step="0.001" min="0" max="100" /></p>
-				<p class="right-align">Beach and Shore: <input type="range" id="weight-beach" step="0.001" min="0" max="100" /></p>
-				<p class="right-align">Plains: <input type="range" id="weight-near_inland" step="0.001" min="0" max="100" /></p>
-				<p class="right-align">Swamps and Forests: <input type="range" id="weight-mid_inland" step="0.001" min="0" max="100" /></p>
-				<p class="right-align">Plateaus: <input type="range" id="weight-far_inland" step="0.001" min="0" max="100" /></p>
-				<p class="right-align">Peaks and Mountains: <input type="range" id="weight-peaks" step="0.001" min="0" max="100" /></p>
+			<div id="adder-div" style="margin-top: 10px; margin-bottom: 10px;">
+				<div id="octave-adder-div" style="float: left">
+					<p class="right-align">海陆倍频增量（Continentalness Octave Adder）：<input type="range" id="adder" min="-6" max="6" step="1" value="0" /></p>
+					<p class="comment">
+						更大的倍频增量将缩小陆地的尺寸，但地形起伏更大，更破碎。<br/>
+						Larger continentalness octave adder will reduce the size of the landmass, but the terrain will be more undulating and broken.
+					</p>
+					<p class="right-align">温度倍频增量（Temperature Octave Adder）：<input type="range" id="temperature-adder" min="-6" max="6" step="1" value="0" /></p>
+					<p class="right-align">湿度倍频增量（Humidity Octave Adder）：<input type="range" id="humidity-adder" min="-6" max="6" step="1" value="0" /></p>
+					<p class="comment">
+						更大的温度/湿度倍频增量将使得群系更小，变化更显著；反之群系则会变得很大。<br/>
+						Larger temperature/humidity octave adder will make the size of the biomes smaller; otherwise, bigger octave adder will make it bigger.
+					</p>
+				</div>
+				<div id="render-settings-div" style="float: left">
+					<p class="right-align">地形可见度（Terrain Alpha）：<input type="range" id="terrain-alpha" min="0" max="255" step="1" value="40"/></p>
+					<p class="right-align">温度可见度（Temperature Alpha）：<input type="range" id="temperature-alpha" min="0" max="255" step="1" value="0"/></p>
+					<p class="right-align">湿度可见度（Humidity Alpha）：<input type="range" id="humidity-alpha" min="0" max="255" step="1" value="0"/></p>
+					<p class="comment">
+						越大的可见度，叠加在群系地图上后会越明显。如在你希望调节温度时，可以提高温度的可见度而减小地形和湿度的可见度。<br/>
+						不要设置得太大，否则会遮挡群系地图。<br/>
+						The larger value of alpha, the more obvious it will be after overlapping on the biome map.<br/>
+						For example, if you are tuning the temperature parameters, you can raise the temperature alpha and decrease the terrain and humidity alpha.<br/>
+						Please do not make the value too large. If you do so, you may hardly see the biome map.
+					</p>
+				</div>
 			</div>
-			<div id="terrain-div" style="float: left; margin-left: 50px;">
-				<h4>地形修饰（Shape of Terrain）：</h4>
-				<p class="comment">
-					这一节的每一项均与地形生成有关，你可以打开地形视图，甚至关闭群系视图来查看地形图。<br/>
-					不要轻易大幅度改动这些值，除非你知道你在干什么。<br/>
-					Each field in this section is related to terrain generation.<br/>
-					You can enable the terrain view, and even disable biome view if you want, to check the relief map.<br/>
-					Don't substantially change these values - not unless you know what are you doing.
-				</p>
-				<p class="right-align">Mushroom Field to Deep Ocean: <input type="range" id="shaper-m2d" step="0.005" min="0" max="100" /></p>
-				<p class="right-align">Deep Ocean to Ocean: <input type="range" id="shaper-d2o" step="0.005" min="0" max="100" /></p>
-				<p class="right-align">Ocean to Coast: <input type="range" id="shaper-o2c" step="0.005" min="0" max="100" /></p>
-				<p class="right-align">Coast Water: <input type="range" id="shaper-cw" step="0.005" min="0" max="100" onchange="coastShaperChange(0)" /></p>
-				<p class="right-align">Coast Bank: <input type="range" id="shaper-cb" step="0.005" min="0" max="100" onchange="coastShaperChange(1)" /></p>
-				<p class="right-align">Coast Land: <input type="range" id="shaper-cl" step="0.005" min="0" max="100" onchange="coastShaperChange(2)" /></p>
-				<p class="right-align">Near Inland: <input type="range" id="shaper-nearinland" step="0.005" min="0" max="100" /></p>
-				<p class="right-align">Inland Erosion: <input type="range" id="shaper-inland" step="0.005" min="0" max="100" /></p>
-				<p class="right-align">Mid-inland: <input type="range" id="shaper-midinland" step="0.005" min="0" max="100" /></p>
-				<p class="right-align">Peak Erosion: <input type="range" id="shaper-peak" step="0.005" min="0" max="100" /></p>
+			<div id="main-settings-div" style="margin-top: 10px; margin-bottom: 10px;">
+				<div id="biome-div" style="float: left; margin-right: 20px;">
+					<h4>群系权重（Weights of Biomes）：</h4>
+					<p class="comment">
+						这一节的每一项均与群系生成有关，权重越大，对应的群系生成概率越高。<br/>
+						Each field in this section is related to biome generation.<br/>
+						Larger weight makes it more possible to generate corresponding biomes.
+					</p>
+					<p class="right-align">Mushroom Field: <input type="range" id="weight-mushroom_field" step="0.001" min="0" max="100" /></p>
+					<p class="right-align">Deep Ocean: <input type="range" id="weight-deep_ocean" step="0.001" min="0" max="100" /></p>
+					<p class="right-align">Ocean: <input type="range" id="weight-ocean" step="0.001" min="0" max="100" /></p>
+					<p class="right-align">Beach and Shore: <input type="range" id="weight-beach" step="0.001" min="0" max="100" /></p>
+					<p class="right-align">Plains: <input type="range" id="weight-near_inland" step="0.001" min="0" max="100" /></p>
+					<p class="right-align">Swamps and Forests: <input type="range" id="weight-mid_inland" step="0.001" min="0" max="100" /></p>
+					<p class="right-align">Plateaus: <input type="range" id="weight-far_inland" step="0.001" min="0" max="100" /></p>
+					<p class="right-align">Peaks and Mountains: <input type="range" id="weight-peaks" step="0.001" min="0" max="100" /></p>
+				</div>
+				<div id="terrain-div" style="float: left; margin-left: 20px;">
+					<h4>地形修饰（Shape of Terrain）：</h4>
+					<p class="comment">
+						这一节的每一项均与地形生成有关，你可以打开地形视图，甚至关闭群系视图来查看地形图。<br/>
+						不要轻易大幅度改动这些值，除非你知道你在干什么。<br/>
+						Each field in this section is related to terrain generation.<br/>
+						You can enable the terrain view, and even disable biome view if you want, to check the relief map.<br/>
+						Don't substantially change these values - not unless you know what are you doing.
+					</p>
+					<p class="right-align">Mushroom Field to Deep Ocean: <input type="range" id="shaper-m2d" step="0.005" min="0" max="100" /></p>
+					<p class="right-align">Deep Ocean to Ocean: <input type="range" id="shaper-d2o" step="0.005" min="0" max="100" /></p>
+					<p class="right-align">Ocean to Coast: <input type="range" id="shaper-o2c" step="0.005" min="0" max="100" /></p>
+					<p class="right-align">Coast Water: <input type="range" id="shaper-cw" step="0.005" min="0" max="100" onchange="coastShaperChange(0)" /></p>
+					<p class="right-align">Coast Bank: <input type="range" id="shaper-cb" step="0.005" min="0" max="100" onchange="coastShaperChange(1)" /></p>
+					<p class="right-align">Coast Land: <input type="range" id="shaper-cl" step="0.005" min="0" max="100" onchange="coastShaperChange(2)" /></p>
+					<p class="right-align">Near Inland: <input type="range" id="shaper-nearinland" step="0.005" min="0" max="100" /></p>
+					<p class="right-align">Inland Erosion: <input type="range" id="shaper-inland" step="0.005" min="0" max="100" /></p>
+					<p class="right-align">Mid-inland: <input type="range" id="shaper-midinland" step="0.005" min="0" max="100" /></p>
+					<p class="right-align">Peak Erosion: <input type="range" id="shaper-peak" step="0.005" min="0" max="100" /></p>
+				</div>
+				<div id="temperature-and-humidity-div" style="float: left; margin-left: 20px;">
+					<h4>温度与湿度（Temperature and Humidity）：</h4>
+					<h5>Temperature</h5>
+					<p class="right-align">Cold: <input type="range" id="weight-temperature-cold" step="0.001" min="0" max="100" /></p>
+					<p class="right-align">Cool: <input type="range" id="weight-temperature-cool" step="0.001" min="0" max="100" /></p>
+					<p class="right-align">Neutral: <input type="range" id="weight-temperature-neutral" step="0.001" min="0" max="100" /></p>
+					<p class="right-align">Warm: <input type="range" id="weight-temperature-warm" step="0.001" min="0" max="100" /></p>
+					<p class="right-align">Hot: <input type="range" id="weight-temperature-hot" step="0.001" min="0" max="100" /></p>
+					<h5>Humidity</h5>
+					<p class="right-align">Arid: <input type="range" id="weight-humidity-arid" step="0.001" min="0" max="100" /></p>
+					<p class="right-align">Dry: <input type="range" id="weight-humidity-dry" step="0.001" min="0" max="100" /></p>
+					<p class="right-align">Neutral: <input type="range" id="weight-humidity-neutral" step="0.001" min="0" max="100" /></p>
+					<p class="right-align">Wet: <input type="range" id="weight-humidity-wet" step="0.001" min="0" max="100" /></p>
+					<p class="right-align">Humid: <input type="range" id="weight-humidity-humid" step="0.001" min="0" max="100" /></p>
+				</div>
 			</div>
 		</form>
 	</div>
 	<div id="chart">
-		<div id="main" style="height: 800px; width: 1000px; float: left;"></div>
+		<canvas id="main" width="1024px" height="1024px" style="float:left">Your browser does not support HTML5 canvas label.</canvas>
 		<script type="text/javascript">
 			oceanworldLike();
+			
+			var canvas = document.getElementById('main');
+			canvas.willReadFrequently = true;
+			var ctx = canvas.getContext('2d');
 			
 			let cubic = function(params,x) {
 				return ((params[0] * x + params[1]) * x + params[2]) * x + params[3];
@@ -352,7 +513,7 @@
 				let mushroom_field_initial = [1, 1, 1, 1];
 				let mushroom_field_minimiser = numeric.uncmin(mushroom_field_objective, mushroom_field_initial);
 				let mushroom_field_parameters = mushroom_field_minimiser.solution;
-				console.log(mushroom_field_parameters);
+				//console.log(mushroom_field_parameters);
 				let mushroom_field_bank_left = -1.1;
 				let mushroom_field_bank_right = MUSHROOM_FIELDS_TO_DEEP_OCEAN_SHAPER;
 				while(mushroom_field_bank_right - mushroom_field_bank_left > 1e-7) {
@@ -374,85 +535,126 @@
 				computeConfigValues();
 				let parameters = computeExtraShowParameters();
 				
-				var noise = generateNoise();
-				var chart = echarts.init(document.querySelector("div#main"), 'white', { renderer: 'canvas' });
-				const option = {
-					tooltip: {},
-					toolbox: {
-						feature: {
-							saveAsImage: {}
-						}
-					},
-					grid: {
-						left: 200
-					},
-					xAxis: {
-						type: "category"
-					},
-					yAxis: {
-						type: "category"
-					},
-					visualMap: [
-					/*
-						{
-							min: -1,
-							max: 1,
-							calculable: true,
-							realtime: false,
-							inRange: {
-								color: ['#313695', '#4575b4', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
-							}
-						}
-					*/
-						{
-							seriesIndex: 0,
-							z: 0,
-							type: 'piecewise',
-							pieces: [
-								{max: MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS, label: "Mushroom Fields", color: '#FE74FA'},
-								{min: MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS, max: DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS, label: "Deep Ocean", color: '#323896'},
-								{min: DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS, max: OCEAN_TO_COAST_CONTINENTALNESS, label: "Ocean", color: '#6CA2C6'},
-								{min: OCEAN_TO_COAST_CONTINENTALNESS, max: COAST_TO_INLAND_CONTINENTALNESS, label: "Beach and Shore", color: '#FEFEBE'},
-								{min: COAST_TO_INLAND_CONTINENTALNESS, max: NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS, label: "Plains", color: '#46FA44'},
-								{min: NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS, max: MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS, label: "Swamps and Forests", color: '#08BC06'},
-								{min: MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS, max: PEAKS_CONTINENTALNESS, label: "Plateaus", color: '#9EB49E'},
-								{min: PEAKS_CONTINENTALNESS, label: "Peaks and Mountains", color: '#C2C2C2'},
-							],
-							calculable: true,
-							realtime: false,
-							left: 'left',
-							top: 'top',
-							orient: 'vertical'
-						},
-						{
-							seriesIndex: 1,
-							z: 20,
-							type: 'piecewise',
-							pieces: [
-								{max: parameters[0], label: "Mushroom Island", color: 'rgba(250, 8, 96, 0.15)'},
-								{min: parameters[0], max: parameters[1], label: "Ocean", color: 'rgba(16, 16, 24, 0.15)'},
-								{min: parameters[1], label: "Landmasses", color: 'rgba(254, 4, 12, 0.15)'}
-							],
-							calculable: true,
-							realtime: false,
-							left: 'left',
-							top: 'bottom',
-							orient: 'vertical'
-						}
-					],
-					series: [{
-						id: 0,
-						type: "heatmap",
-						data: noise
-					}, {
-						id: 1,
-						type: "heatmap",
-						data: noise
-					}]
-				};
-				chart.setOption(option);
+				let seed = parseInt(document.getElementById("seed").value);
+				let temp_seed = seed ^ 0x5d53a40f;
+				let humidity_seed = seed ^ 0xa13ed6a2;
+				var noise = generateNoise(seed, parseInt(document.getElementById("adder").value));
+				var temperature_noise = generateNoise(temp_seed, parseInt(document.getElementById("temperature-adder").value) - 1);
+				var humidity_noise = generateNoise(humidity_seed, parseInt(document.getElementById("humidity-adder").value) + 1);
+				let BiomePalette = v => {
+					if(v < MUSHROOM_FIELDS_TO_DEEP_OCEAN_CONTINENTALNESS) {
+						//Mushroom Fields
+						return [0xfe, 0x74, 0xfa];
+					}
+					if(v < DEEP_OCEAN_TO_OCEAN_CONTINENTALNESS) {
+						//Deep Ocean
+						return [0x32, 0x38, 0x96];
+					}
+					if(v < OCEAN_TO_COAST_CONTINENTALNESS) {
+						//Ocean
+						return [0x6c, 0xa2, 0xc6];
+					}
+					if(v < COAST_TO_INLAND_CONTINENTALNESS) {
+						//Beach and Shore
+						return [0xfe, 0xfe, 0xbe];
+					}
+					if(v < NEAR_INLAND_TO_MID_INLAND_CONTINENTALNESS) {
+						//Plains
+						return [0x46, 0xfa, 0x44];
+					}
+					if(v < MID_INLAND_TO_MOUNTAINS_CONTINENTALNESS) {
+						//Swamps and Forests
+						return [0x08, 0xbc, 0x06];
+					}
+					if(v < PEAKS_CONTINENTALNESS) {
+						//Plateaus
+						return [0x9e, 0xb4, 0x9e];
+					}
+					//Peaks and Mountains
+					return [0xc2, 0xc2, 0xc2];
+				}
+				let TerrainPalette = v => {
+					if(v < parameters[0]) {
+						//Mushroom Island
+						return [0xfa, 0x08, 0x60];
+					}
+					if(v < parameters[1]) {
+						//Ocean
+						return [0x10, 0x10, 0x18];
+					}
+					//Landmasses
+					return [0xfe, 0x04, 0x0c];
+				}
+				let TemperaturePalette = v => {
+					if(v < FROZEN_TEMPERATURE) {
+						return [0xf0, 0xf0, 0xfe];
+					}
+					if(v < COOL_TEMPERATURE) {
+						return [0x6a, 0xcc, 0xf0];
+					}
+					if(v < WARM_TEMPERATURE) {
+						return [0x64, 0xbc, 0xaa];
+					}
+					if(v < HOT_TEMPERATURE) {
+						return [0xb2, 0xa0, 0xd8];
+					}
+					return [0xea, 0x60, 0x1c];
+				}
+				let HumidityPalette = v => {
+					if(v < ARID_HUMIDITY) {
+						return [0xc8, 0xb4, 0x08];
+					}
+					if(v < DRY_HUMIDITY) {
+						return [0xd4, 0x50, 0x98];
+					}
+					if(v < WET_HUMIDITY) {
+						return [0xb6, 0xb6, 0xb6];
+					}
+					if(v < HUMID_HUMIDITY) {
+						return [0x72, 0xd4, 0xc4];
+					}
+					return [0x10, 0xf0, 0x90];
+				}
+				setNoise(ctx, noise, BiomePalette, 1.0);
+				setNoise(ctx, noise, TerrainPalette, parseInt(document.getElementById("terrain-alpha").value) / 255.0);
+				setNoise(ctx, temperature_noise, TemperaturePalette, parseInt(document.getElementById("temperature-alpha").value) / 255.0);
+				setNoise(ctx, humidity_noise, HumidityPalette, parseInt(document.getElementById("humidity-alpha").value) / 255.0);
 			 }
 		</script>
+		<div id="legend" style="float: left; margin-left: 50px; margin-right: 50px;">
+			<div id="legend-biome">
+				<p><span style="background-color: #fe74fa">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Mushroom Fields</p>
+				<p><span style="background-color: #323896">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Deep Ocean</p>
+				<p><span style="background-color: #6ca2c6">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Ocean</p>
+				<p><span style="background-color: #fefebe">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Beach and Shore</p>
+				<p><span style="background-color: #46fa44">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Plains</p>
+				<p><span style="background-color: #08bc06">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Swamps and Forests</p>
+				<p><span style="background-color: #9eb49e">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Plateaus</p>
+				<p><span style="background-color: #c2c2c2">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Peaks and Mountains</p>
+			</div>
+			<br/>
+			<div id="legend-terrain">
+				<p><span style="background-color: #fa0860">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Mushroom Island</p>
+				<p><span style="background-color: #101018">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Ocean</p>
+				<p><span style="background-color: #fe040c">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Landmasses</p>
+			</div>
+			<br/>
+			<div id="legend-temperature">
+				<p><span style="background-color: #f0f0fe">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Cold</p>
+				<p><span style="background-color: #6accf0">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Cool</p>
+				<p><span style="background-color: #64bcaa">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Neutral</p>
+				<p><span style="background-color: #b2a0d8">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Warm</p>
+				<p><span style="background-color: #ea601c">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Hot</p>
+			</div>
+			<br/>
+			<div id="legend-humidity">
+				<p><span style="background-color: #c8b408">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Arid</p>
+				<p><span style="background-color: #d45098">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Dry</p>
+				<p><span style="background-color: #b6b6b6">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Neutral</p>
+				<p><span style="background-color: #72d4c4">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Wet</p>
+				<p><span style="background-color: #10f090">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;Humid</p>
+			</div>
+		</div>
 		<div id="config" style="float: left;">
 			<pre id="config-output" style="height: 600px; width: 450px; border-style:solid; border-width: 1px;">
 			</pre>

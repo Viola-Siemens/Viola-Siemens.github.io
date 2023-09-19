@@ -76,7 +76,7 @@ function buildNoiseVectors() {
 	return ret;
 }
 
-function generateNoise() {
+function generateNoise(seed, adder) {
 	let maph = [];
 	let noise = [];
 	for(let i = 0; i < _Size; ++i) {
@@ -86,8 +86,7 @@ function generateNoise() {
 		}
 		maph.push(tmp);
 	}
-	srand(parseInt(document.getElementById("seed").value));
-	let adder = parseInt(document.getElementById("adder").value);
+	srand(seed);
 	for(let ee = 0; ee < 2; ++ee) {
 		for(let e = 0; e <= _N; ++e) {
 			if(-_Settings.firstOctave - adder - e >= 0) {
@@ -163,10 +162,71 @@ function generateNoise() {
 		if((i & _Scale) == 0) {
 			for(let j = 0; j < _Size; ++j) {
 				if((j & _Scale) == 0) {
-					noise.push([i, j, maph[i][j] * 1.625]);
+					noise.push(maph[i][j] * 1.625);
 				}
 			}
 		}
 	}
 	return noise;
+}
+
+const CANVAS_SIZE = 1024;
+
+function getPixel(imdata, x, y) {
+	x = x * CANVAS_SIZE / _Size;
+	y = y * CANVAS_SIZE / _Size;
+	let column = 4 * (y * CANVAS_SIZE + x);
+	let r = imdata.data[column++];
+	let g = imdata.data[column++];
+	let b = imdata.data[column++];
+	let a = imdata.data[column];
+	return [r, g, b, a / 255];
+}
+
+function setPixel(imdata, x, y, r, g, b, a) {
+	let w = Math.floor(_Size / CANVAS_SIZE);
+	let h = Math.floor(_Size / CANVAS_SIZE);
+	if(_Size > CANVAS_SIZE) {
+		if(x % w != 0) {
+			return;
+		}
+	}
+	if(_Size > CANVAS_SIZE) {
+		if(y % h != 0) {
+			return;
+		}
+	}
+	let dw = Math.max(1, CANVAS_SIZE / _Size);
+	let dh = Math.max(1, CANVAS_SIZE / _Size);
+	x = x * CANVAS_SIZE / _Size;
+	y = y * CANVAS_SIZE / _Size;
+	for(let i = x; i < x + dw; ++i) {
+		for(let j = y; j < y + dh; ++j) {
+			let column = 4 * (j * CANVAS_SIZE + i);
+			imdata.data[column++] = r;
+			imdata.data[column++] = g;
+			imdata.data[column++] = b;
+			imdata.data[column] = a;
+		}
+	}
+}
+
+function addPixel(imdata, x, y, r, g, b, a) {
+	let color = getPixel(imdata, x, y);
+	let a1 = 1 - (1 - color[3]) * (1 - a);
+	let r1 = color[0] * (1 - a) + r * a;
+	let g1 = color[1] * (1 - a) + g * a;
+	let b1 = color[2] * (1 - a) + b * a;
+	setPixel(imdata, x, y, r1, g1, b1, a1 * 255);
+}
+
+function setNoise(ctx, noise, palette, a) {
+	var imdata = ctx.getImageData(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+	for(let i = 0; i < noise.length; ++i) {
+		let color = palette(noise[i]);
+		let x = i % _Size;
+		let y = Math.floor(i / _Size);
+		addPixel(imdata, x, y, color[0], color[1], color[2], a);
+	}
+	ctx.putImageData(imdata, 0, 0);
 }
