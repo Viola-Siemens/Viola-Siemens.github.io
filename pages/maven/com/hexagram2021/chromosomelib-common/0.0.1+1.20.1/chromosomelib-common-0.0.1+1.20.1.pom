@@ -1,0 +1,6 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.hexagram2021</groupId>
+  <artifactId>chromosomelib-common</artifactId>
+  <version>0.0.1+1.20.1</version>
+</project>
